@@ -14,6 +14,15 @@ class UserRepository
 {
 
     /**
+     * Get All Budgets
+     * 
+     * @return budgets
+     */
+    public function all(){
+        return User::all();
+    }
+
+    /**
      * Create User
      *
      * @param  fields

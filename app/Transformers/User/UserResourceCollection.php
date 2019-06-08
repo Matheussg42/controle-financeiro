@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Resources\User;
+namespace App\Transformers\User;
 
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
@@ -30,7 +30,7 @@ class UserResourceCollection extends ResourceCollection
         return [
             'status' => true,
             'msg'    => 'Listando dados',
-            'url'    => route('employees.index')
+            'url'    => route('users.index')
         ];
     }
 
