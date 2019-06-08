@@ -14,3 +14,14 @@ use Illuminate\Http\Request;
 */
 
 Route::post('login', 'Auth\LoginController@login');
+
+
+
+Route::group(['prefix' => 'v1', 'middleware' => 'jwt.auth'], function () {
+    Route::apiResources([
+        'periodo'          => 'PeriodoController',
+        'users'          => 'UserController',
+    ]);
+
+    Route::post('logout', 'Auth\LoginController@logout');
+});

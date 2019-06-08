@@ -45,8 +45,7 @@ class LoginController extends Controller
         // $this->middleware('guest')->except('logout');
     }
 
-    public function login(Request $request)
-    {
+    public function login(Request $request){
         $credentials = $request->only('email', 'password');
 
         if (!$token = \JWTAuth::attempt($credentials)) {
@@ -61,5 +60,22 @@ class LoginController extends Controller
             'token' => $token
         ],200);
 
+    }
+
+    public function logout(Request $request) {
+        try {
+            \JWTAuth::invalidate($request->input('token'));
+            return response([
+                'status' => 'success',
+                'msg' => 'Deslogado com sucesso'
+            ], 200);
+        } catch (JWTException $e) {
+            dd($e);
+            // something went wrong whilst attempting to encode the token
+            return response([
+                'status' => 'error',
+                'msg' => 'Erro. Tente novamente.'
+            ],400);
+        }
     }
 }
