@@ -17,7 +17,7 @@ class CreateRecebimentosTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedInteger('fk_user_id');
             $table->foreign('fk_user_id')->references('id')->on('users');
-            $table->string('mes_ano');
+            $table->string('ano_mes');
             $table->float('valor');
             $table->string('nome');
             $table->longText('comentario');

@@ -17,7 +17,7 @@ class CreatePagamentosTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedInteger('fk_user_id');
             $table->foreign('fk_user_id')->references('id')->on('users');
-            $table->string('mes_ano');
+            $table->string('ano_mes');
             $table->string('tipo');
             $table->float('valor');
             $table->string('nome');

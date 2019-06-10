@@ -37,4 +37,11 @@ class User extends Authenticatable implements JWTSubject
         'password', 'remember_token',
     ];
 
+    /**
+     * Get the budgets record associated with the vehicle.
+     */
+    public function periodo(){
+        return $this->hasMany('App\Periodo');
+    }
+
 }

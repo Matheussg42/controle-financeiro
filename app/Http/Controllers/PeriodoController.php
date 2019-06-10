@@ -4,9 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Periodo;
 use Illuminate\Http\Request;
+use App\Transformers\Periodo\PeriodoResource;
+use App\Transformers\Periodo\PeriodoResourceCollection;
+use App\Http\Requests\Periodo\StorePeriodo;
+use App\Http\Requests\Periodo\UpdatePeriodo;
+use App\Services\ResponseService;
+use App\Http\Controllers\Notification;
+use App\Repositories\Periodo\PeriodoRepository;
 
 class PeriodoController extends Controller
 {
+    private $periodo;
+
+    public function __construct(PeriodoRepository $periodo){
+        $this->periodo = $periodo;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,17 +27,7 @@ class PeriodoController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return new PeriodoResourceCollection($this->periodo->all());
     }
 
     /**
@@ -33,9 +36,15 @@ class PeriodoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StorePeriodo $request)
     {
-        //
+        try{        
+            $data = $this->periodo->create($request->all());
+        }catch(\Throwable|\Exception $e){
+            return ResponseService::exception('periodos.store',null,$e);
+        }
+
+        return new PeriodoResource($data,array('type' => 'store','route' => 'periodos.store'));
     }
 
     /**
