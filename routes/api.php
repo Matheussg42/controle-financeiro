@@ -20,6 +20,7 @@ Route::post('login', 'Auth\LoginController@login');
 Route::group(['prefix' => 'v1', 'middleware' => 'jwt.auth'], function () {
     Route::apiResources([
         'periodos'   => 'PeriodoController',
+        'contas'   => 'ContasController',
         'users'     => 'UserController',
     ]);
 
