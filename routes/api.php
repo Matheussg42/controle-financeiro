@@ -23,5 +23,6 @@ Route::group(['prefix' => 'v1', 'middleware' => 'jwt.auth'], function () {
         'users'     => 'UserController',
     ]);
 
+    Route::put('close-periodo/{id}', 'PeriodoController@close')->name('periodos.close');
     Route::post('logout', 'Auth\LoginController@logout');
 });

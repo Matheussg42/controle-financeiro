@@ -54,11 +54,11 @@ class PeriodoRepository
      *
      * @return user
      */
-    public function show()
+    public function show($id)
     {
-        $user = auth()->user();
-        if ($user) {
-            return $user;
+        $periodo = auth()->user()->periodo()->find($id);
+        if ($periodo) {
+            return $periodo;
         } else {
             throw new \Exception('Nada Encontrado', -404);
         }
@@ -70,40 +70,35 @@ class PeriodoRepository
      * @param fields
      * @return user
      */
-    public function update($fields)
+    public function update($fields, $id)
     {
-        $user = $this->show();
-        $user->update($fields);
-        return $user;
+        $periodo = $this->show($id);
+        unset($fields['ano_mes'], $fields['status']);
+
+        if($periodo['status'] == "fechado"){
+            throw new \Exception('O mês já se encontra fechado.', -403);
+        }else{
+            $periodo->update($fields);
+            return $periodo;
+        }
     }
 
-    /**
-     * Update Password User logged
+     /**
+     * Update User logged
      *
      * @param fields
      * @return user
      */
-    public function updatePassword($password)
+    public function close($id)
     {
-        $user = $this->show();
-        $fields = ['password' => \Hash::make($password)];
-        $user->update($fields);
-        return $user;
-    }
+        $periodo = $this->show($id);
+        $fields['status'] = 'fechado';
 
-    /**
-     * Find User By Id
-     *
-     * @param  id
-     * @return user
-     */
-    public function find($id)
-    {
-        $user = User::find($id);
-        if ($user) {
-            return $user;
-        } else {
-            throw new \Exception('Nada Encontrado', -404);
+        if($periodo['status'] == "fechado"){
+            throw new \Exception('O mês já se encontra fechado.', -403);
+        }else{
+            $periodo->update($fields);
+            return $periodo;
         }
     }
 
@@ -115,14 +110,20 @@ class PeriodoRepository
      */
     public function destroy($id)
     {
-        $user = $this->find($id);
-        $user->delete();
-        return $user;
+        $periodo = $this->show($id);
+
+        if($periodo['status'] == "fechado"){
+            throw new \Exception('Você não pode deletar um mês fechado.', -403);
+        }else{
+            $periodo->delete();
+            return $periodo;
+        }
+
     }
 
     public function findBy($column, $value)
     {
-        $user = User::where($column, $value)->first();
-        return $user;
+        $periodo = auth()->user()->periodo()->where($column, $value)->first();
+        return $periodo;
     }
 }
