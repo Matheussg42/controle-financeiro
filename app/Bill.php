@@ -4,10 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Conta extends Model
+class Bill extends Model
 {
     
-    protected $fillable = ['user_id','nome','vencimento','valor','variacao'];
+    protected $fillable = ['user_id','name','expireDate','value','installments'];
 
     /**
      * Get the user that owns the vehicle.

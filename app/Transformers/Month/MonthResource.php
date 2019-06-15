@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Transformers\Periodo;
+namespace App\Transformers\Month;
 
 use Illuminate\Http\Resources\Json\Resource;
 
 use App\Services\ResponseService;
 
-class PeriodoResource extends Resource
+class MonthResource extends Resource
 {
     /**
      * @var
@@ -39,10 +39,10 @@ class PeriodoResource extends Resource
         return [
             'id' => $this->id,
             'user_id' => $this->user_id,
-            'ano_mes' => $this->ano_mes,
-            'refeicao' => $this->refeicao,
-            'lucro' => $this->lucro,
-            'despesa' => $this->despesa,
+            'yearMont' => $this->yearMont,
+            'ticket' => $this->ticket,
+            'received' => $this->received,
+            'paid' => $this->paid,
             'total' => $this->total,
             'status' => $this->status,
         ];

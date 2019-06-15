@@ -13,10 +13,10 @@ class CreatePagamentoTiposTable extends Migration
      */
     public function up()
     {
-        Schema::create('pagamento_tipos', function (Blueprint $table) {
+        Schema::create('paymentTypes', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nome');
-            $table->float('limite');
+            $table->string('name');
+            $table->float('limit');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreatePagamentoTiposTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pagamento_tipos');
+        Schema::dropIfExists('paymentTypes');
     }
 }

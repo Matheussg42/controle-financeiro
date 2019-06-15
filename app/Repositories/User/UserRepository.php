@@ -4,12 +4,6 @@ namespace App\Repositories\User;
 
 use App\User;
 
-/**
- * Repository decouple models from controllers and
- * assign readable names to complicated queries
- *
- * @author Alexandre Simon
- */
 class UserRepository
 {
 
@@ -40,12 +34,13 @@ class UserRepository
      */
     public function show()
     {
-        $user = auth()->user();
-        if ($user) {
-            return $user;
-        } else {
+        $user = auth()
+        ->user();
+        if (!$user) {
             throw new \Exception('Nada Encontrado', -404);
         }
+
+        return $user;
     }
 
     /**
@@ -84,11 +79,11 @@ class UserRepository
     public function find($id)
     {
         $user = User::find($id);
-        if ($user) {
-            return $user;
-        } else {
+        if (!$user) {
             throw new \Exception('Nada Encontrado', -404);
         }
+
+        return $user;
     }
 
     /**

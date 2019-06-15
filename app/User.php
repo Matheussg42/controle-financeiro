@@ -40,14 +40,14 @@ class User extends Authenticatable implements JWTSubject
     /**
      * Get the period record associated with the vehicle.
      */
-    public function periodo(){
-        return $this->hasMany('App\Periodo');
+    public function month(){
+        return $this->hasMany('App\Mont');
     }
     /**
      * Get the account record associated with the vehicle.
      */
-    public function conta(){
-        return $this->hasMany('App\Conta');
+    public function bill(){
+        return $this->hasMany('App\Bill');
     }
 
 }

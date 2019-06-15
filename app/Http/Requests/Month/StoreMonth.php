@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Requests\Periodo;
+namespace App\Http\Requests\Month;
 
-use App\Periodo;
+use App\Month;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class StorePeriodo extends FormRequest
+class StoreMonth extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -46,7 +46,7 @@ class StorePeriodo extends FormRequest
                 'msg'   => 'Ops! Algum campo obrigatório não foi preenchido.',
                 'status' => false,
                 'errors'    => $validator->errors(),
-                'url'    => route('periodos.store')
+                'url'    => route('months.store')
             ], 403));
        }
     }

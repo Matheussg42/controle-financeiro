@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Transformers\Periodo;
+namespace App\Transformers\Month;
 
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
 use App\Services\ResponseService;
 
-class PeriodoResourceCollection extends ResourceCollection
+class MonthResourceCollection extends ResourceCollection
 {
       /**
      * Create a new resource instance.
@@ -30,7 +30,7 @@ class PeriodoResourceCollection extends ResourceCollection
         return [
             'status' => true,
             'msg'    => 'Listando dados',
-            'url'    => route('periodos.index')
+            'url'    => route('months.index')
         ];
     }
 

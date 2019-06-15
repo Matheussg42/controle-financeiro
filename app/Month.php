@@ -4,10 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Periodo extends Model
+class Month extends Model
 {
     
-    protected $fillable = ['user_id','ano_mes','refeicao','lucro','despesa', 'total', 'status'];
+    protected $fillable = ['user_id','yearMonth','ticket','received','paid', 'total', 'status'];
 
     /**
      * Get the user that owns the vehicle.

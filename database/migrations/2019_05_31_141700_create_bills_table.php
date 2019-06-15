@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateContasTable extends Migration
+class CreateBillsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,14 @@ class CreateContasTable extends Migration
      */
     public function up()
     {
-        Schema::create('contas', function (Blueprint $table) {
+        Schema::create('bills', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedInteger('fk_user_id');
             $table->foreign('fk_user_id')->references('id')->on('users');
-            $table->string('nome');
-            $table->string('vencimento');
-            $table->float('valor');
+            $table->string('name');
+            $table->string('expireDate');
+            $table->float('value');
+            $table->string('installments');
             $table->timestamps();
         });
     }
@@ -31,6 +32,6 @@ class CreateContasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contas');
+        Schema::dropIfExists('bills');
     }
 }

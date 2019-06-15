@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRecebimentoParcelasTable extends Migration
+class CreateRecebimentosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,14 @@ class CreateRecebimentoParcelasTable extends Migration
      */
     public function up()
     {
-        Schema::create('recebimento_parcelas', function (Blueprint $table) {
+        Schema::create('billings', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedInteger('fk_user_id');
             $table->foreign('fk_user_id')->references('id')->on('users');
-            $table->string('nome');
-            $table->float('valor');
-            $table->longText('comentario');
-            $table->integer('parcelas');
-            $table->string('inicio');
+            $table->string('yearMonth');
+            $table->float('value');
+            $table->string('name');
+            $table->longText('comment');
             $table->timestamps();
         });
     }
@@ -33,6 +32,6 @@ class CreateRecebimentoParcelasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('recebimento_parcelas');
+        Schema::dropIfExists('billings');
     }
 }

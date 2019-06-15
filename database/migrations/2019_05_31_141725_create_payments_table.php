@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRecebimentosTable extends Migration
+class CreatePagamentosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,15 @@ class CreateRecebimentosTable extends Migration
      */
     public function up()
     {
-        Schema::create('recebimentos', function (Blueprint $table) {
+        Schema::create('payments', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedInteger('fk_user_id');
             $table->foreign('fk_user_id')->references('id')->on('users');
-            $table->string('ano_mes');
-            $table->float('valor');
-            $table->string('nome');
-            $table->longText('comentario');
+            $table->string('yearMonth');
+            $table->string('type');
+            $table->float('value');
+            $table->string('name');
+            $table->longText('comment');
             $table->timestamps();
         });
     }
@@ -32,6 +33,6 @@ class CreateRecebimentosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('recebimentos');
+        Schema::dropIfExists('payments');
     }
 }
