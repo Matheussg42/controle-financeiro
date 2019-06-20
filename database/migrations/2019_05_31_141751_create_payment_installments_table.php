@@ -15,8 +15,8 @@ class CreatePaymentInstallmentsTable extends Migration
     {
         Schema::create('paymentInstallments', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedInteger('fk_user_id');
-            $table->foreign('fk_user_id')->references('id')->on('users');
+            $table->unsignedInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedInteger('fk_type_id');
             $table->foreign('fk_type_id')->references('id')->on('paymentTypes');
             $table->string('name');

@@ -15,8 +15,8 @@ class CreateBillingInstallmentsTable extends Migration
     {
         Schema::create('billingInstallments', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedInteger('fk_user_id');
-            $table->foreign('fk_user_id')->references('id')->on('users');
+            $table->unsignedInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->string('name');
             $table->float('value');
             $table->longText('comment');
