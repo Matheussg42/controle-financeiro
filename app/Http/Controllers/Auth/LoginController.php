@@ -70,7 +70,6 @@ class LoginController extends Controller
                 'msg' => 'Deslogado com sucesso'
             ], 200);
         } catch (JWTException $e) {
-            dd($e);
             // something went wrong whilst attempting to encode the token
             return response([
                 'status' => 'error',

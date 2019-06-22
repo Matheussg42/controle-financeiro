@@ -32,7 +32,6 @@ class BillController extends Controller
             ->bill
             ->create($request->all());
         }catch(\Throwable|\Exception $e){
-            dd($e);
             return ResponseService::exception('bills.store',null,$e);
         }
 
