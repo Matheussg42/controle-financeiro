@@ -1,10 +1,10 @@
-billing_installments<?php
+<?php
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBillingInstallmentsTable extends Migration
+class CreateIncomeInstallmentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateBillingInstallmentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('billingInstallments', function (Blueprint $table) {
+        Schema::create('incomeInstallments', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
@@ -33,6 +33,6 @@ class CreateBillingInstallmentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('billingInstallments');
+        Schema::dropIfExists('incomeInstallments');
     }
 }

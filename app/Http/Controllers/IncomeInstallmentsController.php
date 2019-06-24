@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\BillingInstallments;
+use App\IncomeInstallments;
 use Illuminate\Http\Request;
 
-class BillingInstallmentsController extends Controller
+class IncomeInstallmentsController extends Controller
 {
     public function index()
     {
