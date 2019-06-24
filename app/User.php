@@ -50,4 +50,8 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasMany('App\Bill');
     }
 
+    public function paymentType(){
+        return $this->hasMany('App\PaymentType');
+    }
+
 }

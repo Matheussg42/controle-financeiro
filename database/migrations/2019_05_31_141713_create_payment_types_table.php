@@ -13,10 +13,12 @@ class CreatePaymentTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('paymentTypes', function (Blueprint $table) {
+        Schema::create('payment_types', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->string('name');
-            $table->float('limit');
+            $table->float('limit')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ class CreatePaymentTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('paymentTypes');
+        Schema::dropIfExists('payment_types');
     }
 }

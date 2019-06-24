@@ -18,7 +18,7 @@ class CreatePaymentInstallmentsTable extends Migration
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedInteger('fk_type_id');
-            $table->foreign('fk_type_id')->references('id')->on('paymentTypes');
+            $table->foreign('fk_type_id')->references('id')->on('payment_types');
             $table->string('name');
             $table->float('value');
             $table->longText('comment');

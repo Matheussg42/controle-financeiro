@@ -19,9 +19,10 @@ Route::post('login', 'Auth\LoginController@login');
 
 Route::group(['prefix' => 'v1', 'middleware' => 'jwt.auth'], function () {
     Route::apiResources([
-        'months'    => 'MonthController',
-        'bills'     => 'BillController',
-        'users'     => 'UserController',
+        'months'        => 'MonthController',
+        'bills'         => 'BillController',
+        'users'         => 'UserController',
+        'payment-types' => 'PaymentTypeController',
     ]);
 
     Route::put('close-month/{id}', 'MonthController@close')->name('months.close');
