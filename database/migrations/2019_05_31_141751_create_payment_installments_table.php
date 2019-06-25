@@ -13,15 +13,15 @@ class CreatePaymentInstallmentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('paymentInstallments', function (Blueprint $table) {
+        Schema::create('payment_installments', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->unsignedInteger('fk_type_id');
-            $table->foreign('fk_type_id')->references('id')->on('payment_types');
+            $table->unsignedInteger('type_id');
+            $table->foreign('type_id')->references('id')->on('payment_types');
             $table->string('name');
             $table->float('value');
-            $table->longText('comment');
+            $table->longText('comment')->nullable();
             $table->integer('installments');
             $table->string('begin');
             $table->timestamps();
