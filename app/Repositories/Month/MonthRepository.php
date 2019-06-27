@@ -91,7 +91,7 @@ class MonthRepository
         $check = auth()
         ->user()
         ->month()
-        ->where('ano_mes', $yearMonth)
+        ->where('yearMonth', $yearMonth)
         ->first();
 
         if(!empty($check)){

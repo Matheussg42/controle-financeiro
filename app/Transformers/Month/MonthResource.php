@@ -39,7 +39,7 @@ class MonthResource extends Resource
         return [
             'id' => $this->id,
             'user_id' => $this->user_id,
-            'yearMont' => $this->yearMont,
+            'yearMonth' => $this->yearMonth,
             'ticket' => $this->ticket,
             'received' => $this->received,
             'paid' => $this->paid,

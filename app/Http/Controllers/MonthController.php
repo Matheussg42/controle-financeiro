@@ -32,6 +32,7 @@ class MonthController extends Controller
             ->month
             ->create($request->all());
         }catch(\Throwable|\Exception $e){
+            dd($e);
             return ResponseService::exception('months.store',null,$e);
         }
 
