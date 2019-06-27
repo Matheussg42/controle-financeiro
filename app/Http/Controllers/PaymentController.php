@@ -32,10 +32,10 @@ class PaymentController extends Controller
             ->payment
             ->create($request->all());
         }catch(\Throwable|\Exception $e){
-            return ResponseService::exception('payment-installments.store',null,$e);
+            return ResponseService::exception('payments.store',null,$e);
         }
 
-        return new PaymentResource($data,array('type' => 'store','route' => 'payment-installments.store'));
+        return new PaymentResource($data,array('type' => 'store','route' => 'payments.store'));
     }
 
     public function show($id)
@@ -45,10 +45,10 @@ class PaymentController extends Controller
             ->payment
             ->show($id);
         }catch(\Throwable|\Exception $e){
-            return ResponseService::exception('payment-installments.show',null,$e);
+            return ResponseService::exception('payments.show',null,$e);
         }
 
-        return new PaymentResource($data,array('type' => 'show','route' => 'payment-installments.show'));
+        return new PaymentResource($data,array('type' => 'show','route' => 'payments.show'));
     }
 
     public function update(UpdatePayment $request, $id)
@@ -58,10 +58,10 @@ class PaymentController extends Controller
             ->payment
             ->update($request->all(), $id);
         }catch(\Throwable|\Exception $e){
-            return ResponseService::exception('payment-installments.update',$id,$e);
+            return ResponseService::exception('payments.update',$id,$e);
         }
 
-        return new PaymentResource($data,array('type' => 'update','route' => 'payment-installments.update'));
+        return new PaymentResource($data,array('type' => 'update','route' => 'payments.update'));
     }
 
     public function destroy($id)
@@ -71,8 +71,8 @@ class PaymentController extends Controller
             ->payment
             ->destroy($id);
         }catch(\Throwable|\Exception $e){
-            return ResponseService::exception('payment-installments.destroy',$id,$e);
+            return ResponseService::exception('payments.destroy',$id,$e);
         }
-        return new PaymentResource($data,array('type' => 'destroy','route' => 'payment-installments.destroy')); 
+        return new PaymentResource($data,array('type' => 'destroy','route' => 'payments.destroy')); 
     }
 }

@@ -23,8 +23,6 @@ class PaymentRepository
 
     public function show($id)
     {
-
-
         $payment = auth()
         ->user()
         ->payment()

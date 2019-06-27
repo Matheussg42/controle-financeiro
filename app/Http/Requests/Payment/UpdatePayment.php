@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Requests\PaymentInstallments;
+namespace App\Http\Requests\Payment;
 
-use App\PaymentInstallments;
+use App\Payment;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class UpdatePaymentInstallments extends FormRequest
+class UpdatePayment extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,9 +28,10 @@ class UpdatePaymentInstallments extends FormRequest
     public function rules()
     {
         return [
-            'name'          => 'required',
-            'value'         => 'required',
-            'installments'  => 'required',
+            'month_id'  => 'required',
+            'type_id'   => 'required',
+            'name'      => 'required',
+            'value'     => 'required',
         ];
     }
 
