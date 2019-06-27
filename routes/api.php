@@ -24,6 +24,7 @@ Route::group(['prefix' => 'v1', 'middleware' => 'jwt.auth'], function () {
         'users'                 => 'UserController',
         'payment-types'         => 'PaymentTypeController',
         'payment-installments'  => 'PaymentInstallmentsController',
+        'payments'               => 'PaymentController',
     ]);
 
     Route::put('close-month/{id}', 'MonthController@close')->name('months.close');

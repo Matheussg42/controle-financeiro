@@ -14,11 +14,13 @@ class CreatePaymentsTable extends Migration
     public function up()
     {
         Schema::create('payments', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->string('yearMonth');
-            $table->string('type');
+            $table->unsignedInteger('month_id');
+            $table->foreign('month_id')->references('id')->on('months');
+            $table->unsignedInteger('type_id');
+            $table->foreign('type_id')->references('id')->on('payment_types');
             $table->float('value');
             $table->string('name');
             $table->longText('comment');

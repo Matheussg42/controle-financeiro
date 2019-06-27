@@ -37,15 +37,11 @@ class User extends Authenticatable implements JWTSubject
         'password', 'remember_token',
     ];
 
-    /**
-     * Get the period record associated with the vehicle.
-     */
+    
     public function month(){
-        return $this->hasMany('App\Mont');
+        return $this->hasMany('App\Month');
     }
-    /**
-     * Get the account record associated with the vehicle.
-     */
+    
     public function bill(){
         return $this->hasMany('App\Bill');
     }
@@ -56,5 +52,9 @@ class User extends Authenticatable implements JWTSubject
 
     public function paymentInstallments(){
         return $this->hasMany('App\PaymentInstallments');
+    }
+
+    public function payment(){
+        return $this->hasMany('App\Payment');
     }
 }
