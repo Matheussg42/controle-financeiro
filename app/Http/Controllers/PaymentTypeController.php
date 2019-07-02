@@ -75,4 +75,10 @@ class PaymentTypeController extends Controller
         }
         return new PaymentTypeResource($data,array('type' => 'destroy','route' => 'payment-types.destroy')); 
     }
+
+    static function getTypeName($id){
+        $type = new PaymentTypeRepository();
+        $typeName = $type->getTypeName($id);
+        return $typeName;
+    }
 }

@@ -3,7 +3,7 @@
 namespace App\Repositories\Payments;
 
 use App\PaymentType;
-use Carbon\Carbon;
+use DB;
 
 class PaymentTypeRepository
 {
@@ -51,5 +51,13 @@ class PaymentTypeRepository
 
         $paymentType->delete();
         return $paymentType;
+    }
+
+    public function getTypeName($id){
+        $name = DB::table('payment_types')->where('id', $id)->pluck('name')->first();
+        if (!$name) {
+            $name = $id;
+        }
+        return $name;
     }
 }
