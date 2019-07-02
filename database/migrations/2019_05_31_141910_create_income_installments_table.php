@@ -13,13 +13,13 @@ class CreateIncomeInstallmentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('incomeInstallments', function (Blueprint $table) {
+        Schema::create('income_installments', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('name');
             $table->float('value');
-            $table->longText('comment');
+            $table->longText('comment')->nullable();
             $table->integer('installments');
             $table->string('begin');
             $table->timestamps();
@@ -33,6 +33,6 @@ class CreateIncomeInstallmentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('incomeInstallments');
+        Schema::dropIfExists('income_installments');
     }
 }

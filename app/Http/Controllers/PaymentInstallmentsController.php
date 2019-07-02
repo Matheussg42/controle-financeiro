@@ -9,7 +9,6 @@ use App\Transformers\PaymentInstallments\PaymentInstallmentsResourceCollection;
 use App\Http\Requests\PaymentInstallments\StorePaymentInstallments;
 use App\Http\Requests\PaymentInstallments\UpdatePaymentInstallments;
 use App\Services\ResponseService;
-use App\Http\Controllers\Notification;
 use App\Repositories\Payments\PaymentInstallmentsRepository;
 
 class PaymentInstallmentsController extends Controller
@@ -32,7 +31,6 @@ class PaymentInstallmentsController extends Controller
             ->paymentInstallments
             ->create($request->all());
         }catch(\Throwable|\Exception $e){
-            dd($e);
             return ResponseService::exception('payment-installments.store',null,$e);
         }
 
