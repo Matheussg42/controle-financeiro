@@ -17,10 +17,11 @@ class CreateIncomesTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->string('yearMonth');
+            $table->unsignedInteger('yearMonth');
+            $table->foreign('yearMonth')->references('id')->on('months');
             $table->float('value');
             $table->string('name');
-            $table->longText('comment');
+            $table->longText('comment')->nullable();
             $table->timestamps();
         });
     }
