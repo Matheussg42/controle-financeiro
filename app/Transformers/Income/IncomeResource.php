@@ -3,8 +3,8 @@
 namespace App\Transformers\Income;
 
 use Illuminate\Http\Resources\Json\Resource;
-
 use App\Services\ResponseService;
+use App\Http\Controllers\UserController;
 
 class IncomeResource extends Resource
 {
@@ -38,7 +38,7 @@ class IncomeResource extends Resource
       
         return [
             'id' => $this->id,
-            'user' => $this->user_id,
+            'user' => UserController::getUserName($this->user_id),
             'name' => $this->name,
             'month_id' => $this->month_id,
             'value' => $this->value,

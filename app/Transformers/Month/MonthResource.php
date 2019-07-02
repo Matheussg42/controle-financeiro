@@ -5,6 +5,7 @@ namespace App\Transformers\Month;
 use Illuminate\Http\Resources\Json\Resource;
 
 use App\Services\ResponseService;
+use App\Http\Controllers\UserController;
 
 class MonthResource extends Resource
 {
@@ -38,7 +39,7 @@ class MonthResource extends Resource
       
         return [
             'id' => $this->id,
-            'user_id' => $this->user_id,
+            'user' => UserController::getUserName($this->user_id),
             'yearMonth' => $this->yearMonth,
             'ticket' => $this->ticket,
             'received' => $this->received,

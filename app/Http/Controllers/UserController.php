@@ -48,34 +48,9 @@ class UserController extends Controller
         return new UserResource($data,array('type' => 'store','route' => 'users.store'));
     }
 
-     /**
-     * Display the specified resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function show()
-    {
-        try{ 
-            $data = $this->user->show();
-        }catch(\Throwable|\Exception $e){
-            return ResponseService::exception('users.show');
-        }
-        return new UserResource($data,array('type' => 'show','route' => 'users.show'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  UpdateUser  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateUser $request)
-    {
-        try{
-            $data = $this->user->update($request->all());
-        }catch(\Throwable|\Exception $e){
-            return ResponseService::exception('users.update');
-        }
-        return new UserResource($data,array('type' => 'update','route' => 'users.update'));  
+    static function getUserName($id){
+        $user = new UserRepository();
+        $userName = $user->getUserName($id);
+        return $userName;
     }
 }

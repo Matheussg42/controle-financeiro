@@ -3,6 +3,7 @@
 namespace App\Repositories\User;
 
 use App\User;
+use DB;
 
 class UserRepository
 {
@@ -103,5 +104,13 @@ class UserRepository
     {
         $user = User::where($column, $value)->first();
         return $user;
+    }
+
+    public function getUserName($id){
+        $name = DB::table('users')->where('id', $id)->pluck('name')->first();
+        if (!$name) {
+            $name = $id;
+        }
+        return $name;
     }
 }

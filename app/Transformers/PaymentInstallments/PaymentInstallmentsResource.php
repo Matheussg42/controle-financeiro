@@ -3,7 +3,7 @@
 namespace App\Transformers\PaymentInstallments;
 
 use Illuminate\Http\Resources\Json\Resource;
-
+use App\Http\Controllers\UserController;
 use App\Services\ResponseService;
 
 class PaymentInstallmentsResource extends Resource
@@ -38,7 +38,7 @@ class PaymentInstallmentsResource extends Resource
       
         return [
             'id' => $this->id,
-            'user' => $this->user_id,
+            'user' => UserController::getUserName($this->user_id),
             'name' => $this->name,
             'type' => $this->type_id,
             'value' => $this->value,

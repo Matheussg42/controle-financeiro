@@ -3,7 +3,7 @@
 namespace App\Transformers\IncomeInstallments;
 
 use Illuminate\Http\Resources\Json\Resource;
-
+use App\Http\Controllers\UserController;
 use App\Services\ResponseService;
 
 class IncomeInstallmentsResource extends Resource
@@ -38,7 +38,7 @@ class IncomeInstallmentsResource extends Resource
       
         return [
             'id' => $this->id,
-            'user' => $this->user_id,
+            'user' => UserController::getUserName($this->user_id),
             'name' => $this->name,
             'value' => $this->value,
             'comment' => $this->comment,

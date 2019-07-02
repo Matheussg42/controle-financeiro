@@ -3,8 +3,8 @@
 namespace App\Transformers\Bill;
 
 use Illuminate\Http\Resources\Json\Resource;
-
 use App\Services\ResponseService;
+use App\Http\Controllers\UserController;
 
 class BillResource extends Resource
 {
@@ -38,7 +38,7 @@ class BillResource extends Resource
       
         return [
             'id' => $this->id,
-            'user_id' => $this->user_id,
+            'user' => UserController::getUserName($this->user_id),
             'name' => $this->name,
             'expireDate' => $this->expireDate,
             'value' => $this->value,
