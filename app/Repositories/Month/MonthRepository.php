@@ -4,6 +4,7 @@ namespace App\Repositories\Month;
 
 use App\Month;
 use Carbon\Carbon;
+use DB;
 
 class MonthRepository
 {
@@ -116,5 +117,13 @@ class MonthRepository
             'total'     => 0.00,
             'status'    => 'aberto'
         ];
+    }
+
+    public function getMonthName($id){
+        $name = DB::table('months')->where('id', $id)->pluck('yearMonth')->first();
+        if (!$name) {
+            $name = $id;
+        }
+        return $name;
     }
 }

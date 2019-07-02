@@ -4,6 +4,7 @@ namespace App\Transformers\Payment;
 
 use Illuminate\Http\Resources\Json\Resource;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\MonthController;
 use App\Services\ResponseService;
 
 class PaymentResource extends Resource
@@ -39,7 +40,7 @@ class PaymentResource extends Resource
         return [
             'id' => $this->id,
             'user_id' => UserController::getUserName($this->user_id),
-            'month_id' => $this->month_id,
+            'month_id' => MonthController::getMonthName($this->month_id),
             'type_id' => $this->type_id,
             'name' => $this->name,
             'value' => $this->value,

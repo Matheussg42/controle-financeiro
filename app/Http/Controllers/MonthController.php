@@ -88,4 +88,10 @@ class MonthController extends Controller
         }
         return new MonthResource($data,array('type' => 'destroy','route' => 'months.destroy')); 
     }
+
+    static function getMonthName($id){
+        $month = new MonthRepository();
+        $monthName = $month->getMonthName($id);
+        return $monthName;
+    }
 }

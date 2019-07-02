@@ -5,6 +5,7 @@ namespace App\Transformers\Income;
 use Illuminate\Http\Resources\Json\Resource;
 use App\Services\ResponseService;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\MonthController;
 
 class IncomeResource extends Resource
 {
@@ -40,7 +41,7 @@ class IncomeResource extends Resource
             'id' => $this->id,
             'user' => UserController::getUserName($this->user_id),
             'name' => $this->name,
-            'month_id' => $this->month_id,
+            'month_id' => MonthController::getMonthName($this->month_id),
             'value' => $this->value,
             'comment' => $this->comment
         ];
