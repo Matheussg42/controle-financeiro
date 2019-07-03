@@ -43,6 +43,13 @@ class PaymentRepository
         return $payment;
     }
 
+    public function getMonthPayments($month_id)
+    {
+        $payments =  auth()->user()->month()->find($month_id)->payment;
+
+        return $payments;
+    }
+
     public function destroy($id)
     {
         $payment = $this->show($id);

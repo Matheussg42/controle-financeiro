@@ -29,6 +29,8 @@ Route::group(['prefix' => 'v1', 'middleware' => 'jwt.auth'], function () {
         'income'                => 'IncomeController',
     ]);
 
+    Route::get('payments/getMonth/{id}', 'PaymentController@getMonthPayments')->name('payments.getMonth');
+    Route::get('income/getMonth/{id}', 'IncomeController@getMonthIncome')->name('income.getMonth');
     Route::put('close-month/{id}', 'MonthController@close')->name('months.close');
     Route::post('logout', 'Auth\LoginController@logout');
 });

@@ -64,6 +64,18 @@ class PaymentController extends Controller
         return new PaymentResource($data,array('type' => 'update','route' => 'payments.update'));
     }
 
+    public function getMonthPayments($month_id){
+        try{
+            $data = $this
+            ->payment
+            ->getMonthPayments($month_id);
+        }catch(\Throwable|\Exception $e){
+            return ResponseService::exception('payments.getMonth',$id,$e);
+        }
+
+        return new PaymentResourceCollection($data);
+    }
+
     public function destroy($id)
     {
         try{

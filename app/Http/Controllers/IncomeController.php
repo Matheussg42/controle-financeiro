@@ -60,6 +60,18 @@ class IncomeController extends Controller
         return new IncomeResource($data, array('type' => 'update', 'route' => 'income.update'));
     }
 
+    public function getMonthIncome($month_id){
+        try{
+            $data = $this
+            ->income
+            ->getMonthIncomes($month_id);
+        }catch(\Throwable|\Exception $e){
+            return ResponseService::exception('income.getMonth',$id,$e);
+        }
+
+        return new IncomeResourceCollection($data);
+    }
+
     public function destroy($id){
         try{
             $data = $this

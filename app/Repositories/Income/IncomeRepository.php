@@ -45,6 +45,13 @@ class IncomeRepository
         return $income;
     }
 
+    public function getMonthIncomes($month_id)
+    {
+        $payments =  auth()->user()->month()->find($month_id)->income;
+
+        return $payments;
+    }
+
     public function destroy($id)
     {
         $income = $this->show($id);
