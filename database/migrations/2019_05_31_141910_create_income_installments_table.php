@@ -20,7 +20,7 @@ class CreateIncomeInstallmentsTable extends Migration
             $table->string('name');
             $table->float('value');
             $table->longText('comment')->nullable();
-            $table->integer('installments');
+            $table->string('installments');
             $table->string('begin');
             $table->timestamps();
         });
