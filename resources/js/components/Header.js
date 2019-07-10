@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import App from './App'
 
 const Header = () => (
     <nav className='navbar navbar-expand-md navbar-light navbar-laravel'>
