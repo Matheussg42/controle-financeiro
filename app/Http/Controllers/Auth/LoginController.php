@@ -11,6 +11,7 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Http\Request;
 use JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
+use App\Repositories\User\UserRepository;
 use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
@@ -55,9 +56,14 @@ class LoginController extends Controller
                 'msg' => 'Invalid Credentials.'
             ], 400);
         }
+
+        $userRepository = new UserRepository();
+        $userLoginData = $userRepository->userLoginData($credentials['email']); 
+        
         return response([
+            'user' => $userLoginData,
             'status' => 'success',
-            'token' => $token
+            'token' => $token,
         ],200);
 
     }

@@ -113,4 +113,13 @@ class UserRepository
         }
         return $name;
     }
+
+    public function userLoginData($email){
+        $result = DB::table('users')->where('email', $email)->first();
+        return [
+            'id' => $result->id,
+            'name' => $result->name,
+            'email' => $result->email
+        ];
+    }
 }
