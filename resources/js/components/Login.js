@@ -57,38 +57,53 @@ class Login extends React.Component {
         }
         return (
             <div>
-                <h1>Login</h1>
                 {this.state.error !== '' ?
                     <p className="text-danger">{this.state.error}</p>
                     :
                     null
                 }
                 {this.props.isAuthenticated ?
-                    <p className="text-info">You are already logged in.</p>
+                    <Redirect to='/home' />
                     :
-                    <form onSubmit={this.handleSubmit}>
-                        <div className='form-group'>
-                            <input
-                                name='email'
-                                type='email'
-                                className='form-control'
-                                placeholder='Email'
-                                value={this.state.email}
-                                onChange={this.handleChange} />
+                    <div class="page-wrapper">
+                        <div class="page-content--bge5">
+                            <div class="container">
+                                <div class="login-wrap">
+                                    <div class="login-content">
+                                        <div class="login-form">
+                                            <form onSubmit={this.handleSubmit}>
+                                                <div className='form-group'>
+                                                    <input
+                                                        class="au-input au-input--full"
+                                                        name='email'
+                                                        type='email'
+                                                        className='form-control'
+                                                        placeholder='Email'
+                                                        value={this.state.email}
+                                                        onChange={this.handleChange} />
+                                                </div>
+
+                                                <div className='form-group'>
+                                                    <input
+                                                        class="au-input au-input--full"
+                                                        name='password'
+                                                        type='password'
+                                                        className='form-control'
+                                                        placeholder='Password'
+                                                        value={this.state.password}
+                                                        onChange={this.handleChange} />
+                                                </div>
+
+                                                <div className='form-group'>
+                                                    <input class="au-btn au-btn--block au-btn--green m-b-20" type='submit' className='btn' value='Login' />
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div className='form-group'>
-                            <input
-                                name='password'
-                                type='password'
-                                className='form-control'
-                                placeholder='Password'
-                                value={this.state.password}
-                                onChange={this.handleChange} />
-                        </div>
-                        <div className='form-group'>
-                            <input type='submit' className='btn' value='Login' />
-                        </div>
-                    </form>
+                    </div>
                 }
             </div>
         );

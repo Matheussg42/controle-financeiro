@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Header from './Header'
+import Home from './Home'
 import Login from './Login'
 
 class App extends Component {
@@ -44,7 +45,7 @@ class App extends Component {
                 <div>
                     <Header />
 					<Switch>
-						{/* <Route exact path='/' component={Home} /> */}
+						<Route exact path='/home' component={Home} />
 						<Route exact path='/login' render={(props) => <Login authenticate={this.authenticate} isAuthenticated={this.state.isAuthenticated} {...props} />} />
 						{/* <PrivateRoute exact path='/month' component={Month} isAuthenticated={this.state.isAuthenticated} token={this.state.token} refresh={this.refresh} /> */}
 					</Switch>
@@ -66,6 +67,35 @@ const PrivateRoute = ({ component: Component, isAuthenticated, token, ...rest })
 			}} />
 		)
 	)} />
+);
+
+const Menu = (props) => (
+	<ul className="list-inline">
+		<li>
+			<NavLink exact activeClassName="active" to="/">
+				Home
+			</NavLink>
+		</li>
+		<li>
+			<NavLink exact activeClassName="active" to="/login">
+				Login
+			</NavLink>
+		</li>
+		<li>
+			<NavLink exact activeClassName="active" to="/clients">
+				Clients
+			</NavLink>
+		</li>
+		{props.isAuthenticated ?
+			<li>
+				<a href="#" onClick={props.logout}>
+					Logout
+				</a>
+			</li>
+			:
+			null	
+		}
+	</ul>
 );
 
 ReactDOM.render(<App />, document.getElementById('app'))
