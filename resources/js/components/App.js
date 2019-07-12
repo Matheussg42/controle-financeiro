@@ -1,59 +1,63 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { BrowserRouter, NavLink, Route, Redirect, Switch } from 'react-router-dom'
 import Header from './Header'
-import Home from './Home'
 import Login from './Login'
+import Dashboard from './Dashboard'
 
 class App extends Component {
 
-    constructor() {
-        super();
-        this.state = {
-            isAuthenticated: false,
-            token: null
-        };
-        this.authenticate = this.authenticate.bind(this);
-        this.logout = this.logout.bind(this);
-    }
+	constructor() {
+		super();
+		this.state = {
+			isAuthenticated: false,
+			token: null
+		};
+		this.authenticate = this.authenticate.bind(this);
+		this.logout = this.logout.bind(this);
+	}
 
-    componentWillMount() {
-        const lsToken = localStorage.getItem('jwt');
-        if (lsToken) {
-            this.authenticate(lsToken);
-        }
-    }
+	componentWillMount() {
+		const lsToken = localStorage.getItem('jwt');
+		if (lsToken) {
+			this.authenticate(lsToken);
+		}
+	}
 
-    authenticate(token) {
-        this.setState({
-            isAuthenticated: true,
-            token: token
-        });
-        localStorage.setItem('jwt', token);
-    }
+	authenticate(token, user) {
+		this.setState({
+			isAuthenticated: true,
+			token: token,
+			user: user
+		});
+		let userLogged = JSON.stringify(user);
+		localStorage.setItem('jwt', token);
+		localStorage.setItem('userLogged', userLogged);
+	}
 
-    logout() {
-        this.setState({
-            isAuthenticated: false,
-            token: null
-        });
-    }
+	logout() {
+		this.setState({
+			isAuthenticated: false,
+			token: null
+		});
 
-    render() {
-        return (
-            <BrowserRouter>
-                <div>
-                    <Header />
-					<Switch>
-						<Route exact path='/home' component={Home} />
+		localStorage.removeItem('jwt');
+		localStorage.removeItem('userLogged');
+	}
+
+	render() {
+		return (
+			<BrowserRouter>
+				<div>
+					<Switch>	
+						<PrivateRoute exact path='/dashboard' component={Dashboard} isAuthenticated={this.state.isAuthenticated} logout={this.state.logout} token={this.state.token} />	
 						<Route exact path='/login' render={(props) => <Login authenticate={this.authenticate} isAuthenticated={this.state.isAuthenticated} {...props} />} />
-						{/* <PrivateRoute exact path='/month' component={Month} isAuthenticated={this.state.isAuthenticated} token={this.state.token} refresh={this.refresh} /> */}
 					</Switch>
-                </div>
-            </BrowserRouter>
-        )
-    }
-    
+				</div>
+			</BrowserRouter>
+		)
+	}
+
 }
 
 const PrivateRoute = ({ component: Component, isAuthenticated, token, ...rest }) => (
@@ -67,35 +71,6 @@ const PrivateRoute = ({ component: Component, isAuthenticated, token, ...rest })
 			}} />
 		)
 	)} />
-);
-
-const Menu = (props) => (
-	<ul className="list-inline">
-		<li>
-			<NavLink exact activeClassName="active" to="/">
-				Home
-			</NavLink>
-		</li>
-		<li>
-			<NavLink exact activeClassName="active" to="/login">
-				Login
-			</NavLink>
-		</li>
-		<li>
-			<NavLink exact activeClassName="active" to="/clients">
-				Clients
-			</NavLink>
-		</li>
-		{props.isAuthenticated ?
-			<li>
-				<a href="#" onClick={props.logout}>
-					Logout
-				</a>
-			</li>
-			:
-			null	
-		}
-	</ul>
 );
 
 ReactDOM.render(<App />, document.getElementById('app'))

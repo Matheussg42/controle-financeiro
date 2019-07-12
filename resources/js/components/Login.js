@@ -35,7 +35,8 @@ class Login extends React.Component {
             .then((response) => {
                 this.setState({ error: '' });
                 const token = response.data.token;
-                this.props.authenticate(token);
+                const user = response.data.user;
+                this.props.authenticate(token, user);
             }).then(() => {
                 $("#login-form-button")
                     .removeAttr("disabled")
@@ -50,7 +51,8 @@ class Login extends React.Component {
     }
 
     render() {
-        if (this.props.isAuthenticated && this.props.location.state !== undefined) {
+        if (this.props
+            .isAuthenticated && this.props.location.state !== undefined) {
             return (
                 <Redirect to={this.props.location.state.from} />
             );
@@ -63,18 +65,18 @@ class Login extends React.Component {
                     null
                 }
                 {this.props.isAuthenticated ?
-                    <Redirect to='/home' />
+                    <Redirect to='/dashboard' />
                     :
-                    <div class="page-wrapper">
-                        <div class="page-content--bge5">
-                            <div class="container">
-                                <div class="login-wrap">
-                                    <div class="login-content">
-                                        <div class="login-form">
+                    <div className="page-wrapper">
+                        <div className="page-content--bge5">
+                            <div className="container">
+                                <div className="login-wrap">
+                                    <div className="login-content">
+                                        <div className="login-form">
                                             <form onSubmit={this.handleSubmit}>
                                                 <div className='form-group'>
                                                     <input
-                                                        class="au-input au-input--full"
+                                                        className="au-input au-input--full"
                                                         name='email'
                                                         type='email'
                                                         className='form-control'
@@ -85,7 +87,7 @@ class Login extends React.Component {
 
                                                 <div className='form-group'>
                                                     <input
-                                                        class="au-input au-input--full"
+                                                        className="au-input au-input--full"
                                                         name='password'
                                                         type='password'
                                                         className='form-control'
@@ -95,7 +97,7 @@ class Login extends React.Component {
                                                 </div>
 
                                                 <div className='form-group'>
-                                                    <input class="au-btn au-btn--block au-btn--green m-b-20" type='submit' className='btn' value='Login' />
+                                                    <input className="au-btn au-btn--block au-btn--green m-b-20" type='submit' className='btn' value='Login' />
                                                 </div>
                                             </form>
                                         </div>
