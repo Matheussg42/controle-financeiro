@@ -19,8 +19,9 @@ class App extends Component {
 
 	componentWillMount() {
 		const lsToken = localStorage.getItem('jwt');
-		if (lsToken) {
-			this.authenticate(lsToken);
+		const lsUser = JSON.parse(localStorage.getItem('userLogged'));
+		if (lsToken && lsUser) {
+			this.authenticate(lsToken, lsUser);
 		}
 	}
 
@@ -50,7 +51,7 @@ class App extends Component {
 			<BrowserRouter>
 				<div>
 					<Switch>	
-						<PrivateRoute exact path='/dashboard' component={Dashboard} isAuthenticated={this.state.isAuthenticated} logout={this.state.logout} token={this.state.token} />	
+						<PrivateRoute exact path='/dashboard' component={Dashboard} isAuthenticated={this.state.isAuthenticated} logout={this.state.logout} user={this.state.user} token={this.state.token} />	
 						<Route exact path='/login' render={(props) => <Login authenticate={this.authenticate} isAuthenticated={this.state.isAuthenticated} {...props} />} />
 					</Switch>
 				</div>

@@ -65538,9 +65538,10 @@ function (_Component) {
     key: "componentWillMount",
     value: function componentWillMount() {
       var lsToken = localStorage.getItem('jwt');
+      var lsUser = JSON.parse(localStorage.getItem('userLogged'));
 
-      if (lsToken) {
-        this.authenticate(lsToken);
+      if (lsToken && lsUser) {
+        this.authenticate(lsToken, lsUser);
       }
     }
   }, {
@@ -65576,6 +65577,7 @@ function (_Component) {
         component: _Dashboard__WEBPACK_IMPORTED_MODULE_5__["default"],
         isAuthenticated: this.state.isAuthenticated,
         logout: this.state.logout,
+        user: this.state.user,
         token: this.state.token
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         exact: true,
@@ -65739,26 +65741,65 @@ function (_React$Component) {
     _classCallCheck(this, Header);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Header).call(this));
-    var userLogged = localStorage.getItem('userLogged');
-    var token = localStorage.getItem('jwt');
+    _this.userLogged = localStorage.getItem('userLogged');
     return _this;
   }
 
   _createClass(Header, [{
     key: "render",
     value: function render() {
-      console.log(this.props.logout);
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
-        className: "navbar navbar-expand-md navbar-light navbar-laravel"
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
+        className: "header-desktop4"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-        className: "navbar-brand",
-        to: "/"
-      }, "NavBar"), this.props.isAuthenticated ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "header4-wrap"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "header__logo"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "#"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "images/icon/logo-blue.png",
+        alt: "CoolAdmin"
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "header__tool"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "account-wrap"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "account-item account-item--style2 clearfix js-item-menu"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "content"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: "js-acc-btn",
+        href: "#"
+      }, this.props.user.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "account-dropdown js-dropdown"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "info clearfix"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "content"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+        className: "name"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "#"
+      }, this.props.user.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "email"
+      }, this.props.user.email))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "account-dropdown__body"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "account-dropdown__item"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "#"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "zmdi zmdi-account"
+      }), "Conta"))), this.props.isAuthenticated ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "account-dropdown__footer"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "#",
         onClick: this.props.logout
-      }, "Logout")) : null));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "zmdi zmdi-power"
+      }), "Logout")) : null)))))));
     }
   }]);
 
