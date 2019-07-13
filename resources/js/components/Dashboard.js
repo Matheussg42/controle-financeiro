@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, Link, NavLink, Route, Redirect, Switch } from 'react-router-dom'
 import Header from './Header'
-import Breadcrumb from './Breadcrumb';
+import Sidebar from './Sidebar';
 
 class Dashboard extends Component {
     constructor() {
@@ -19,17 +19,14 @@ class Dashboard extends Component {
         
         return (
             <React.Fragment>
+                <Sidebar {...this.props} />
                 <Header {...this.props} />
-                <Breadcrumb />
 
-                <section>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-xl-3">
-                            </div>
-                        </div>
+                <div className="page-container">
+                    <div className="main-content">
+
                     </div>
-                </section>
+                </div>
             </React.Fragment>
         )
     }
