@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, Link, NavLink, Route, Redirect, Switch } from 'react-router-dom'
 import Header from './Header'
+import Breadcrumb from './Breadcrumb';
 
 class Dashboard extends Component {
     constructor() {
@@ -17,7 +18,19 @@ class Dashboard extends Component {
     render() {
         
         return (
-            <Header {...this.props} />
+            <React.Fragment>
+                <Header {...this.props} />
+                <Breadcrumb />
+
+                <section>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-3">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </React.Fragment>
         )
     }
 }
