@@ -38,8 +38,9 @@ class Header extends React.Component {
                                                 </div>
                                             </div>
                                             <div className="account-dropdown__footer">
-                                                <a href="#">
-                                                    <i className="zmdi zmdi-power"></i>{this.props.logout}</a>
+                                                <a href="">
+                                                    <i className="zmdi zmdi-power"></i>Logout
+                                                </a>
                                             </div>
                                         </div>
                                     </div>

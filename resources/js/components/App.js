@@ -51,7 +51,7 @@ class App extends Component {
 			<BrowserRouter>
 				<div>
 					<Switch>	
-						<PrivateRoute exact path='/dashboard' component={Dashboard} isAuthenticated={this.state.isAuthenticated} logout={this.state.logout} user={this.state.user} token={this.state.token} />	
+						<PrivateRoute exact path='/dashboard' component={Dashboard} isAuthenticated={this.state.isAuthenticated} logout={this.logout} user={this.state.user} token={this.state.token} />	
 						<Route exact path='/login' render={(props) => <Login authenticate={this.authenticate} isAuthenticated={this.state.isAuthenticated} {...props} />} />
 					</Switch>
 				</div>
