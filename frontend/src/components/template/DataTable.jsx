@@ -1,38 +1,67 @@
 import './DataTable.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import React from 'react'
+import React, { Component } from 'react';
 
-export default props =>{
-    return(
-        <table className="table">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
+class DataTable extends Component {
+    renderTableHead() {
+        if(this.props.tables[0] !== undefined){
+            let tableKeys = Object.keys(this.props.tables[0]);
+            return (
+                <tr key={tableKeys.id}>
+                    {this.tableHeadKeys(tableKeys)}
                 </tr>
-            </thead>
-            <tbody className="table-striped">
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                </tr>
-            </tbody>
-        </table>
-    )
+            )
+        }
+    }
+
+    tableHeadKeys(keys){
+        return keys.map(keys => {
+            return (
+                <th key={keys}>{keys}</th>
+            )
+        })
+    }
+
+    renderTableBody() {
+        if(this.props.tables[0] !== undefined){
+            
+            return this.props.tables.map((tables, index) => {
+                const { id } = tables //destructuring
+                return (
+                   <tr key={id}>
+                       {this.tableBodyItens(id, tables)}
+                   </tr>
+                )
+            })
+            
+        }
+    }
+
+    tableBodyItens(id,body){
+        var i=0;
+        return Object.keys(body).map(itens => {
+            var itemId = i;
+            i++
+            return (
+                <td key={`${id}_${itemId}`}>{body[itens]}</td>
+            )
+        })
+    }
+
+    render() {
+        // console.log(keys(this.props.months[0]))
+        // console.log(this.props.months[0])
+        return(
+            <table className="table">
+                <thead>
+                    {this.renderTableHead()}
+                </thead>
+                <tbody className="table-striped">
+                    {this.renderTableBody()}
+                </tbody>
+            </table>
+        )
+    }
 }
+
+export default DataTable;

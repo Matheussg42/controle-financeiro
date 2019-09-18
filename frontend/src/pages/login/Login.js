@@ -11,7 +11,6 @@ const Login = () => {
     const handleSubmit = values => {
         axios.post('http://127.0.0.1:8000/api/login', values)
             .then(resp => {
-                console.log(resp)
                 const { data } = resp
                 if (data) {
                     localStorage.setItem('app-token', data.token)
