@@ -43,7 +43,7 @@ class MonthRepository
     public function update($fields, $id)
     {
         $month = $this->show($id);
-        // unset($fields['yearMonth'], $fields['status']);
+        unset($fields['yearMonth'], $fields['status']);
 
         $this->checkMonthStatus($month);
 
