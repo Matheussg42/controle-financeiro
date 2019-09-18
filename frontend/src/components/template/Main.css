@@ -3,45 +3,6 @@ main > div.p-3.mt-3 {
     box-shadow: 0px 0px 15px #0004;
 }
 
-.cover-poke{
-    width: 100%;
-}
-
-.pokeListItem p{
-    padding: 6px;
-    text-align: center;
-    text-transform: capitalize;
-    cursor: pointer;
-    margin-bottom: 10px;
-    transition: 0.5s all;
-}
-
-.pokeListItem p:hover{
-    background: #ed504d;
-    color: #fff;
-}
-
-.arrowPokeList{
-    display: block;
-    margin: 5px 0;
-    text-align: center;
-    width: 100%;
-}
-
-.arrowPokeList span{
-    padding: 10px;
-    background: #fb8c8a;
-    color: #fff;
-    font-weight: bold;
-    margin-right: 10px;
-    cursor: pointer;
-    transition: 0.5s all;
-}
-
-.arrowPokeList span:hover{
-    background: #df3d3a;
-}
-
 .cursor-pointer{
     cursor: pointer
 }
