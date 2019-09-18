@@ -8,26 +8,26 @@ import DataTable from './../../components/template/DataTable'
 import {Api} from './../../components/Api'
 import axios from 'axios'
 
+
+const initialState = {
+    months: []
+}
+
+const headerProps = {
+    icon: 'bar-chart',
+    title: 'Dashboard',
+}
+
 class Home extends React.Component {
+    state = { ...initialState }
+
     constructor(props){
         super(props);
-        this.state = {
-            months: []
-        };
+        this.renderPosts();
     }
-      
-    async componentDidMount() {
-        this.setState({months: await this.renderPosts()});
-        this.headerProps = {
-            icon: 'bar-chart',
-            title: 'Dashboard',
-        }
-
-    }
-
 
     renderPosts = async() => {
-        const months = await axios.get( 
+        const result = await axios.get( 
             `${Api.urlAPI}/months`,
             Api.config,
         ).then((response) => {
@@ -39,7 +39,7 @@ class Home extends React.Component {
             }
         });
 
-        return months;
+        return this.setState({months: result});
     }
 
     render() {
@@ -48,8 +48,11 @@ class Home extends React.Component {
                 <Logo />
                 <Nav />
                 <div className="page-home">
-                    <Main {...this.headerProps}>
-                        <div>
+                    <Main {...headerProps}>
+                        <div className="card mt-3" >
+                            <div className="card-header">
+                                Last Months
+                            </div>
                             <DataTable tables={this.state.months}/>
                         </div>
                     </Main>

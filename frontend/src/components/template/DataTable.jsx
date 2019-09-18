@@ -50,7 +50,7 @@ class DataTable extends Component {
 
     render() {
         // console.log(keys(this.props.months[0]))
-        // console.log(this.props.months[0])
+        console.log(this.props)
         return(
             <table className="table">
                 <thead>
