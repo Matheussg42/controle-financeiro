@@ -4,6 +4,7 @@ import Logo from './../../components/template/Logo'
 import Footer from './../../components/template/Footer'
 import Nav from './../../components/template/Nav'
 import DataTable from './../../components/template/DataTable'
+import MonthDataTable from './../../pages/home/MonthDataTable'
 
 import {Api} from './../../components/Api'
 import axios from 'axios'
@@ -42,6 +43,22 @@ class Home extends React.Component {
         return this.setState({months: result});
     }
 
+    actualMonth = async() => {
+        const result = await axios.get( 
+            `${Api.urlAPI}/months`,
+            Api.config,
+        ).then((response) => {
+            return response.data.data
+        })
+        .catch((error) => {
+            if(error.response.data.message === 'Token has expired'){
+                Api.apiExpired()
+            }
+        });
+
+        return this.setState({months: result});
+    }
+
     render() {
         return(
             <React.Fragment>
@@ -54,6 +71,12 @@ class Home extends React.Component {
                                 Last Months
                             </div>
                             <DataTable tables={this.state.months}/>
+                        </div>
+                        <div className="card mt-3" >
+                            <div className="card-header">
+                                This month
+                            </div>
+                            <MonthDataTable />
                         </div>
                     </Main>
                 </div>
