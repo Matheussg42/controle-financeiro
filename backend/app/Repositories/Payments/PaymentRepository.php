@@ -43,9 +43,9 @@ class PaymentRepository
         return $payment;
     }
 
-    public function getMonthPayments($month_id)
+    public function getMonthPayments($yearMonth)
     {
-        $payments =  auth()->user()->month()->find($month_id)->payment;
+        $payments =  auth()->user()->month()->find($yearMonth)->payment;
 
         return $payments;
     }

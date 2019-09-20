@@ -41,7 +41,7 @@ class PaymentResource extends Resource
         return [
             'id' => $this->id,
             'user_id' => UserController::getUserName($this->user_id),
-            'month_id' => MonthController::getMonthName($this->month_id),
+            'yearMonth' => MonthController::getMonthName($this->yearMonth),
             'type_id' => PaymentTypeController::getTypeName($this->type_id),
             'name' => $this->name,
             'value' => $this->value,

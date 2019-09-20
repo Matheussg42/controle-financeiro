@@ -18,7 +18,7 @@ class StorePayment extends FormRequest
     public function rules()
     {
         return [
-            'month_id'  => 'required',
+            'yearMonth'  => 'required',
             'type_id'   => 'required',
             'name'      => 'required',
             'value'     => 'required',
