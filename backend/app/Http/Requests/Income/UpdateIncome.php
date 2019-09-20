@@ -28,9 +28,7 @@ class UpdateIncome extends FormRequest
     public function rules()
     {
         return [
-            'name'          => 'required',
-            'value'         => 'required',
-            'month_id'      => 'required',
+            'yearMonth'      => 'required',
         ];
     }
 

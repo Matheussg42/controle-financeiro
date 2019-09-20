@@ -45,10 +45,10 @@ class IncomeRepository
         return $income;
     }
 
-    public function getMonthIncomes($month_id)
+    public function getMonthIncomes($yearMonth)
     {
-        $payments =  auth()->user()->month()->find($month_id)->income;
-
+        // dd(auth()->user()->month()->find($yearMonth)->income());
+        $payments =  auth()->user()->month()->find((int)$yearMonth)->income;
         return $payments;
     }
 

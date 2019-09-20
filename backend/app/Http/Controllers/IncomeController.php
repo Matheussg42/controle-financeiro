@@ -30,6 +30,7 @@ class IncomeController extends Controller
                 ->income
                 ->create($request->all());
         } catch (\Throwable | \Exception $e) {
+            dd($e);
             return ResponseService::exception('income.store', null, $e);
         }
 
@@ -60,13 +61,14 @@ class IncomeController extends Controller
         return new IncomeResource($data, array('type' => 'update', 'route' => 'income.update'));
     }
 
-    public function getMonthIncome($month_id){
+    public function getMonthIncome($yearMonth){
         try{
             $data = $this
             ->income
-            ->getMonthIncomes($month_id);
+            ->getMonthIncomes($yearMonth);
         }catch(\Throwable|\Exception $e){
-            return ResponseService::exception('income.getMonth',$id,$e);
+            dd($e);
+            return ResponseService::exception('income.getMonth',$yearMonth,$e);
         }
 
         return new IncomeResourceCollection($data);
