@@ -39,13 +39,13 @@ class MonthResource extends Resource
       
         return [
             'id' => $this->id,
-            'user' => UserController::getUserName($this->user_id),
-            'yearMonth' => $this->yearMonth,
-            'ticket' => $this->ticket,
-            'received' => $this->received,
-            'paid' => $this->paid,
-            'total' => $this->total,
-            'status' => $this->status,
+            'User' => UserController::getUserName($this->user_id),
+            'Data' => $this->yearMonth,
+            'VR' => $this->ticket,
+            'Received' => $this->received,
+            'Paid' => $this->paid,
+            'Total' => $this->total,
+            'Status' => $this->status,
         ];
     }
 
