@@ -52,6 +52,19 @@ class MonthController extends Controller
         return new MonthResource($data,array('type' => 'show','route' => 'months.show'));
     }
 
+    public function getCurrentMonth(){
+        try{        
+            $data = $this
+            ->month
+            ->getCurrentMonth();
+        }catch(\Throwable|\Exception $e){
+            dd($e);
+            return ResponseService::exception('months.getCurrent',null,$e);
+        }
+
+        return new MonthResource($data,array('type' => 'show','route' => 'months.getCurrent'));
+    }
+
     public function update(UpdateMonth $request, $id)
     {
         try{        

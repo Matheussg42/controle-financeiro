@@ -40,6 +40,22 @@ class MonthRepository
         return $month;
     }
 
+    public function getCurrentMonth()
+    {
+        $yearMonth = $this->getTheYearMonth();
+
+        $month = auth()
+        ->user()
+        ->month()
+        ->where("yearMonth", "=", $yearMonth)->first();
+
+        if (!$month) {
+            throw new \Exception('Nada Encontrado', -404);
+        }
+
+        return $month;
+    }
+
     public function update($fields, $id)
     {
         $month = $this->show($id);
