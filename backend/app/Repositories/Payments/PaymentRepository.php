@@ -4,6 +4,7 @@ namespace App\Repositories\Payments;
 
 use App\Payment;
 use Carbon\Carbon;
+use App\Repositories\Month\MonthRepository;
 
 class PaymentRepository
 {
@@ -46,6 +47,19 @@ class PaymentRepository
     public function getMonthPayments($yearMonth)
     {
         $payments =  auth()->user()->month()->find($yearMonth)->payment;
+
+        return $payments;
+    }
+
+    public function currentMonthPayments()
+    {
+        $MonthRepository = new MonthRepository;
+        $yearMonth = $MonthRepository->getCurrentMonth();
+
+        $payments = auth()
+        ->user()
+        ->income()
+        ->where('yearMonth', '=', $yearMonth->id)->get();
 
         return $payments;
     }

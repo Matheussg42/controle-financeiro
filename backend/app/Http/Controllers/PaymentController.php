@@ -76,6 +76,18 @@ class PaymentController extends Controller
         return new PaymentResourceCollection($data);
     }
 
+    public function currentMonthPayments(){
+        try{
+            $data = $this
+            ->payment
+            ->currentMonthPayments();
+        }catch(\Throwable|\Exception $e){
+            return ResponseService::exception('payments.getCurrentPayments',null,$e);
+        }
+
+        return new PaymentResourceCollection($data);
+    }
+
     public function destroy($id)
     {
         try{
