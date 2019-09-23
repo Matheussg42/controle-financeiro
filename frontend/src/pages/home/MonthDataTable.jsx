@@ -10,65 +10,8 @@ import axios from 'axios'
 
 class MonthDataTable extends Component {
 
-    // constructor(props){
-    //     super(props);
-    //     this.state = { 
-    //         currentIncome: {},
-    //         currentPayment: {}
-    //     };
-    //     this.currentIncome();
-    //     // this.currentPayment();
-    //     console.log(this.props)
-    // }
-
-    renderTableHead() {
-        if(this.props.tables[0] !== undefined){
-            let tableKeys = Object.keys(this.props.tables[0]);
-            return (
-                <tr key={tableKeys.id}>
-                    {this.tableHeadKeys(tableKeys)}
-                </tr>
-            )
-        }
-    }
-
-    tableHeadKeys(keys){
-        return keys.map(keys => {
-            return (
-                <th key={keys}>{keys}</th>
-            )
-        })
-    }
-
-    renderTableBody() {
-        if(this.props.tables[0] !== undefined){
-            
-            return this.props.tables.map((tables, index) => {
-                const { id } = tables //destructuring
-                return (
-                   <tr key={id}>
-                       {this.tableBodyItens(id, tables)}
-                   </tr>
-                )
-            })
-            
-        }
-    }
-
-    tableBodyItens(id,body){
-        var i=0;
-        return Object.keys(body).map(itens => {
-            var itemId = i;
-            i++
-            return (
-                <td key={`${id}_${itemId}`}>{body[itens]}</td>
-            )
-        })
-    }
-
+    
     render() {
-        // console.log(this.props.income)
-        console.log(this.props)
         return(
             <section>
                 <nav>
