@@ -4,6 +4,7 @@ namespace App\Repositories\Income;
 
 use App\Income;
 use Carbon\Carbon;
+use App\Repositories\Month\MonthRepository;
 
 class IncomeRepository
 {
@@ -47,9 +48,21 @@ class IncomeRepository
 
     public function getMonthIncomes($yearMonth)
     {
-        // dd(auth()->user()->month()->find($yearMonth)->income());
         $payments =  auth()->user()->month()->find((int)$yearMonth)->income;
         return $payments;
+    }
+
+    public function currentMonthIncome()
+    {
+        $MonthRepository = new MonthRepository;
+        $yearMonth = $MonthRepository->getCurrentMonth();
+
+        $income = auth()
+        ->user()
+        ->income()
+        ->where('yearMonth', '=', $yearMonth->id)->get();
+
+        return $income;
     }
 
     public function destroy($id)

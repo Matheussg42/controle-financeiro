@@ -67,8 +67,19 @@ class IncomeController extends Controller
             ->income
             ->getMonthIncomes($yearMonth);
         }catch(\Throwable|\Exception $e){
-            dd($e);
             return ResponseService::exception('income.getMonth',$yearMonth,$e);
+        }
+
+        return new IncomeResourceCollection($data);
+    }
+    
+    public function currentMonthIncome(){
+        try{
+            $data = $this
+            ->income
+            ->currentMonthIncome();
+        }catch(\Throwable|\Exception $e){
+            return ResponseService::exception('income.getCurrentIncome',null,$e);
         }
 
         return new IncomeResourceCollection($data);
