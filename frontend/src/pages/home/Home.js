@@ -9,23 +9,25 @@ import MonthDataTable from './../../pages/home/MonthDataTable'
 import {Api} from './../../components/Api'
 import axios from 'axios'
 
-
-const initialState = {
-    months: []
-}
-
 const headerProps = {
     icon: 'bar-chart',
     title: 'Dashboard',
 }
 
 class Home extends React.Component {
-    state = { ...initialState }
+    
 
     constructor(props){
         super(props);
         this.renderPosts();
+        this.currentIncome();
+        this.state = { 
+            months: null,
+            currentMonth: null
+        };
     }
+
+
 
     renderPosts = async() => {
         const result = await axios.get( 
@@ -43,9 +45,9 @@ class Home extends React.Component {
         return this.setState({months: result});
     }
 
-    actualMonth = async() => {
+    currentIncome = async() => {
         const result = await axios.get( 
-            `${Api.urlAPI}/months`,
+            `${Api.urlAPI}/currentMonth/income`,
             Api.config,
         ).then((response) => {
             return response.data.data
@@ -56,10 +58,11 @@ class Home extends React.Component {
             }
         });
 
-        return this.setState({months: result});
+        return this.setState({currentIncome: result});
     }
 
     render() {
+        // console.log(this.state.currentIncome)
         return(
             <React.Fragment>
                 <Logo />
@@ -76,7 +79,7 @@ class Home extends React.Component {
                             <div className="card-header">
                                 This month
                             </div>
-                            <MonthDataTable />
+                            <MonthDataTable currentIncome={this.state.currentIncome}/>
                         </div>
                     </Main>
                 </div>

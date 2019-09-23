@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 
 class DataTable extends Component {
     renderTableHead() {
-        if(this.props.tables[0] !== undefined){
+        if(this.props.tables != null){
             let tableKeys = Object.keys(this.props.tables[0]);
             return (
                 <tr key={tableKeys.id}>
@@ -23,7 +23,7 @@ class DataTable extends Component {
     }
 
     renderTableBody() {
-        if(this.props.tables[0] !== undefined){
+        if(this.props.tables != null){
             
             return this.props.tables.map((tables, index) => {
                 const { id } = tables //destructuring
@@ -49,8 +49,6 @@ class DataTable extends Component {
     }
 
     render() {
-        // console.log(keys(this.props.months[0]))
-        console.log(this.props)
         return(
             <table className="table">
                 <thead>
