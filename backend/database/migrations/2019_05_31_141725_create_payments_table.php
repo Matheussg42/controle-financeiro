@@ -23,7 +23,7 @@ class CreatePaymentsTable extends Migration
             $table->foreign('type_id')->references('id')->on('payment_types');
             $table->float('value');
             $table->string('name');
-            $table->longText('comment');
+            $table->longText('comment')->nullable();
             $table->timestamps();
         });
     }
