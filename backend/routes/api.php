@@ -31,7 +31,7 @@ Route::group(['prefix' => 'v1', 'middleware' => 'jwt.auth'], function () {
 
     Route::get('currentMonth', 'MonthController@getCurrentMonth')->name('months.getCurrent');
     Route::get('currentMonth/income/', 'IncomeController@currentMonthIncome')->name('income.getCurrentIncome');
-    Route::get('currentMonth/payment/', 'PaymentController@currentMonthPayment')->name('income.getCurrentPayments');
+    Route::get('currentMonth/payment/', 'PaymentController@currentMonthPayment')->name('payments.getCurrentPayments');
     Route::get('payments/getMonth/{id}', 'PaymentController@getMonthPayments')->name('payments.getMonth');
     Route::get('income/getMonth/{id}', 'IncomeController@getMonthIncome')->name('income.getMonth');
     Route::put('close-month/{id}', 'MonthController@close')->name('months.close');
