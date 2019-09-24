@@ -58,7 +58,7 @@ class PaymentRepository
 
         $payments = auth()
         ->user()
-        ->income()
+        ->payment()
         ->where('yearMonth', '=', $yearMonth->id)->get();
 
         return $payments;

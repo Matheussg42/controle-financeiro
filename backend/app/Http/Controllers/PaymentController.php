@@ -32,6 +32,7 @@ class PaymentController extends Controller
             ->payment
             ->create($request->all());
         }catch(\Throwable|\Exception $e){
+            dd($e);
             return ResponseService::exception('payments.store',null,$e);
         }
 
@@ -76,7 +77,7 @@ class PaymentController extends Controller
         return new PaymentResourceCollection($data);
     }
 
-    public function currentMonthPayments(){
+    public function currentMonthPayment(){
         try{
             $data = $this
             ->payment
