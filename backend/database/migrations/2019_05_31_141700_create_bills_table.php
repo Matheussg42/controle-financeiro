@@ -17,6 +17,8 @@ class CreateBillsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedInteger('yearMonth');
+            $table->foreign('yearMonth')->references('id')->on('months');
             $table->string('name');
             $table->string('expireDate');
             $table->float('value');
