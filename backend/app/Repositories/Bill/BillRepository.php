@@ -4,6 +4,7 @@ namespace App\Repositories\Bill;
 
 use App\Bill;
 use Carbon\Carbon;
+use App\Repositories\Month\MonthRepository;
 
 class BillRepository
 {
@@ -31,6 +32,19 @@ class BillRepository
         if (!$bill) {
             throw new \Exception('Nada Encontrado', -404);
         }
+
+        return $bill;
+    }
+
+    public function currentMonthBill()
+    {
+        $MonthRepository = new MonthRepository;
+        $yearMonth = $MonthRepository->getCurrentMonth();
+
+        $bill = auth()
+        ->user()
+        ->bill()
+        ->where('yearMonth', '=', $yearMonth->id)->get();
 
         return $bill;
     }

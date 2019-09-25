@@ -51,6 +51,18 @@ class BillController extends Controller
         return new BillResource($data,array('type' => 'show','route' => 'bills.show'));
     }
 
+    public function currentMonthBill(){
+        try{
+            $data = $this
+            ->bill
+            ->currentMonthBill();
+        }catch(\Throwable|\Exception $e){
+            return ResponseService::exception('bills.getCurrentBills',null,$e);
+        }
+
+        return new BillResourceCollection($data);
+    }
+
     public function update(UpdateBill $request, $id)
     {
         try{        
