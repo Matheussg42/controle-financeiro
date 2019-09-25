@@ -126,10 +126,10 @@ class MonthRepository
     public function createMonthFields($yearMonth):array 
     {
         return [
-            'yearMonth'=> $yearMonth,
+            'yearMonth' => $yearMonth,
             'ticket'    => 0.00,
             'received'  => 0.00,
-            'paid'   => 0.00,
+            'paid'      => 0.00,
             'total'     => 0.00,
             'status'    => 'aberto'
         ];
