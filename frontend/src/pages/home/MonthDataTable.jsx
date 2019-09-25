@@ -28,7 +28,9 @@ class MonthDataTable extends Component {
                     <div className="tab-pane fade" id="payment-month" role="tabpanel" aria-labelledby="payment-month-tab">
                         <DataTable tables={this.props.currentPayment}/>
                     </div>
-                    <div className="tab-pane fade" id="bill-mont" role="tabpanel" aria-labelledby="bill-mont-tab">c</div>
+                    <div className="tab-pane fade" id="bill-mont" role="tabpanel" aria-labelledby="bill-mont-tab">
+                        <DataTable tables={this.props.currentBill}/>
+                    </div>
                 </div>
             </section>
         )
