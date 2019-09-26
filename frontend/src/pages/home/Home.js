@@ -22,7 +22,6 @@ class Home extends React.Component {
         this.renderPosts();
         this.currentIncome();
         this.currentPayment();
-        this.currentBill();
         this.state = { 
             months: null
         };
@@ -78,22 +77,6 @@ class Home extends React.Component {
         return this.setState({currentPayment: result});
     }
 
-    currentBill = async() => {
-        const result = await axios.get( 
-            `${Api.urlAPI}/currentMonth/bill`,
-            Api.config,
-        ).then((response) => {
-            return response.data.data
-        })
-        .catch((error) => {
-            if(error.response.data.message === 'Token has expired'){
-                Api.apiExpired()
-            }
-        });
-
-        return this.setState({currentBill: result});
-    }
-
     render() {
         // console.log(this.state.currentIncome)
         return(
@@ -114,8 +97,7 @@ class Home extends React.Component {
                             </div>
                             <MonthDataTable 
                                 currentIncome={this.state.currentIncome} 
-                                currentPayment={this.state.currentPayment}
-                                currentBill={this.state.currentBill}/>
+                                currentPayment={this.state.currentPayment}/>
                         </div>
                     </Main>
                 </div>
