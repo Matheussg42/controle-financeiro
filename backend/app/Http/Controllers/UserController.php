@@ -24,7 +24,14 @@
                 return response()->json(['error' => 'could_not_create_token'], 500);
             }
 
-            return response()->json(compact('token'));
+            $userRepository = new UserRepository();
+            $userLoginData = $userRepository->userLoginData($credentials['email']); 
+            
+            return response([
+                'user' => $userLoginData,
+                'status' => 'success',
+                'token' => $token,
+            ],200);
         }
 
         public function register(Request $request)
