@@ -33,6 +33,7 @@ class MonthRepository
         ->month()
         ->find($id);
 
+        
         if (!$month) {
             throw new \Exception('Nada Encontrado', -404);
         }

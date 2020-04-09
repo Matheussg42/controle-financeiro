@@ -1,5 +1,5 @@
 aside.logo {
-    background-color: var(--bg-pokemon);
+    background-color: var(--bg-sidebar-logo);
     display: flex;
     justify-content: center;
     align-items: center;

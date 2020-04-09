@@ -38,7 +38,6 @@ class MonthController extends Controller
         return new MonthResource($data,array('type' => 'store','route' => 'months.store'));
     }
 
-    //TODO - Validar quando não tem retorno.
     public function show($id)
     {
         try{        
@@ -46,7 +45,7 @@ class MonthController extends Controller
             ->month
             ->show($id);
         }catch(\Throwable|\Exception $e){
-            return ResponseService::exception('months.show',null,$e);
+            return ResponseService::exception('months.show',$id,$e);
         }
 
         return new MonthResource($data,array('type' => 'show','route' => 'months.show'));

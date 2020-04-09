@@ -49,7 +49,7 @@ class StorePayment extends FormRequest
                 'msg'   => 'Ops! Algum campo obrigatório não foi preenchido.',
                 'status' => false,
                 'errors'    => $validator->errors(),
-                'url'    => route('payment-installments.store')
+                'url'    => route('payments.store')
             ], 403));
        }
     }

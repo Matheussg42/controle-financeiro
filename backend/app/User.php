@@ -11,14 +11,6 @@ class User extends Authenticatable implements JWTSubject
 {
     use Notifiable;
 
-    public function getJWTIdentifier() {
-        return $this->getKey();
-    }
-    public function getJWTCustomClaims() {
-        return [];
-    }
-
-
     /**
      * The attributes that are mass assignable.
      *
@@ -37,7 +29,15 @@ class User extends Authenticatable implements JWTSubject
         'password', 'remember_token',
     ];
 
-    
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+    public function getJWTCustomClaims()
+    {
+        return [];
+    }
+
     public function month(){
         return $this->hasMany('App\Month');
     }
@@ -50,16 +50,8 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasMany('App\PaymentType');
     }
 
-    public function paymentInstallments(){
-        return $this->hasMany('App\PaymentInstallments');
-    }
-
     public function payment(){
         return $this->hasMany('App\Payment');
-    }
-
-    public function incomeInstallments(){
-        return $this->hasMany('App\IncomeInstallments');
     }
 
     public function income(){

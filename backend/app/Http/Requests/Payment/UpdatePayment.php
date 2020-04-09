@@ -48,7 +48,7 @@ class UpdatePayment extends FormRequest
                 'msg'   => 'Ops! Algum campo obrigatório não foi preenchido.',
                 'status' => false,
                 'errors'    => $validator->errors(),
-                'url'    => route('payment-installments.update')
+                'url'    => route('payments.update')
             ], 403));
        }
     }

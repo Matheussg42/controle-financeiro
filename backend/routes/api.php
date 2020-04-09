@@ -13,7 +13,8 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::post('login', 'Auth\LoginController@login');
+Route::post('login', 'UserController@authenticate');
+Route::post('register', 'UserController@register');
 
 
 
@@ -23,9 +24,7 @@ Route::group(['prefix' => 'v1', 'middleware' => 'jwt.auth'], function () {
         'bills'                 => 'BillController',
         'users'                 => 'UserController',
         'payment-types'         => 'PaymentTypeController',
-        'payment-installments'  => 'PaymentInstallmentsController',
         'payments'              => 'PaymentController',
-        'income-installments'   => 'IncomeInstallmentsController',
         'income'                => 'IncomeController',
     ]);
 

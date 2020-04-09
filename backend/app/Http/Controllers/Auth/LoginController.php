@@ -49,6 +49,8 @@ class LoginController extends Controller
     public function login(Request $request){
         $credentials = $request->only('email', 'password');
 
+        dd(\JWTAuth::attempt($credentials));
+
         if (!$token = \JWTAuth::attempt($credentials)) {
             return response([
                 'status' => 'error',

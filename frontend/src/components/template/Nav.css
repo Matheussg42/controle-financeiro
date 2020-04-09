@@ -1,6 +1,6 @@
     
 aside.menu-area {
-    background: var(--bg-pokemon-gradient);
+    background: var(--bg-sidebar);
 }
 
 .menu a {
@@ -13,7 +13,7 @@ aside.menu-area {
 }
 
 .menu a:hover {
-    background: #1d2d65;
+    background: #1e282c;
 }
 
 @media(max-width: 768px) {

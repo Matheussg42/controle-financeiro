@@ -1,6 +1,6 @@
 :root {
-    --bg-pokemon: #283c86;
-    --bg-pokemon-gradient: linear-gradient(180deg, #283c86 0%, #45a247 100%);
+    --bg-sidebar-logo: #222d32;
+    --bg-sidebar: linear-gradient(180deg, #222d32 0%, #25404c 100%);
 
     --logo-height: 100px;
     --header-height: 100px;
