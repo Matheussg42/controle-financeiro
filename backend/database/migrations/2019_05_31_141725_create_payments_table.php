@@ -19,9 +19,8 @@ class CreatePaymentsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedInteger('yearMonth');
             $table->foreign('yearMonth')->references('id')->on('months');
-            $table->unsignedInteger('type_id');
-            $table->foreign('type_id')->references('id')->on('payment_types');
             $table->float('value');
+            $table->string('date');
             $table->string('name');
             $table->longText('comment')->nullable();
             $table->timestamps();

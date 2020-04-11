@@ -20,6 +20,7 @@ class StoreIncome extends FormRequest
         return [
             'name'          => 'required',
             'value'         => 'required',
+            'date'          => 'required',
             'yearMonth'     => 'required',
         ];
     }

@@ -20,6 +20,7 @@ class CreateIncomesTable extends Migration
             $table->unsignedInteger('yearMonth');
             $table->foreign('yearMonth')->references('id')->on('months');
             $table->float('value');
+            $table->string('date');
             $table->string('name');
             $table->longText('comment')->nullable();
             $table->timestamps();

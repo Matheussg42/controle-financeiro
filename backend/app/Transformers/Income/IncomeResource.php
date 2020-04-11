@@ -41,7 +41,8 @@ class IncomeResource extends Resource
             'ID' => $this->id,
             'User' => UserController::getUserName($this->user_id),
             'Name' => $this->name,
-            'Data' => MonthController::getMonthName($this->yearMonth),
+            'Mês' => MonthController::getMonthName($this->yearMonth),
+            'Data' => $this->date,
             'Value' => $this->value,
             'Comment' => $this->comment
         ];

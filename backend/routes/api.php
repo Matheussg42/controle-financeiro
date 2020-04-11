@@ -23,7 +23,6 @@ Route::group(['prefix' => 'v1', 'middleware' => 'jwt.auth'], function () {
         'months'                => 'MonthController',
         'bills'                 => 'BillController',
         'users'                 => 'UserController',
-        'payment-types'         => 'PaymentTypeController',
         'payments'              => 'PaymentController',
         'income'                => 'IncomeController',
     ]);
