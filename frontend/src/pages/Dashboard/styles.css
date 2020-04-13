@@ -8,7 +8,7 @@
 .profile-container.header{
   max-width: 100%;
   margin: 0 0 25px 0;
-  padding: 30px;
+  padding: 15px 30px;
   background: #3498db;
 }
 
@@ -23,10 +23,6 @@
   margin-left: 24px;
 }
 
-.profile-container header img {
-  height: 64px;
-}
-
 .profile-container header a {
   width: 160px;
   margin-left: auto;
@@ -34,8 +30,8 @@
 }
 
 .profile-container header button {
-  height: 60px;
-  width: 60px;
+  height: 40px;
+  width: 40px;
   border-radius: 4px;
   border: 1px solid #dcdce6;
   background: transparent;

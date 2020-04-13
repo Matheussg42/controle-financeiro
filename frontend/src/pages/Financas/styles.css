@@ -75,8 +75,94 @@ form button[type="submit"]:hover {
   text-align: center;
   display: block;
   color: #333;
+  margin-bottom: 20px;
+  margin-top: 15px;
 }
 
 .tableContainer{
   width: 90% !important;
+}
+
+.insertFormButton{
+  background: #fff;
+  padding: 15px 10px;
+  width: 44%;
+  display: inline-block;
+  text-align: center;
+  margin-bottom: 7px;
+  margin-right: 2%;
+  cursor: pointer;
+  transition: 0.5s all;
+}
+
+.insertFormButton.active{
+  background: #3498db;
+  color: #fff;
+}
+
+.tableGrid{
+  max-height: 530px;
+}
+
+.cursorPointed{
+  cursor: pointer;
+}
+
+.totalBox{
+  background-color: #fafafa;
+  color: rgba(0, 0, 0, 0.87);
+  font-weight: 500;
+  line-height: 1.5rem;
+  border-bottom: 1px solid rgba(224, 224, 224, 1);
+  letter-spacing: 0.01071em;
+  padding: 16px;
+  font-size: 0.875rem;
+  text-align: left;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  width: 90% !important;
+  margin-top: 20px;
+}
+
+.totalBox button{
+  width: 100%;
+  border: 0;
+  margin-top: 30px;
+  background: #1f7fc0;
+  border-radius: 2px;
+  padding: 15px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.5s;
+}
+
+.totalBox.topBar{
+  margin-top: 0;
+  background-color: transparent;
+  padding: 0 16px;
+  border-bottom: none;
+  width: 95% !important;
+}
+
+.totalBox.topBar button{
+  margin-top: 0px;
+  width: 48%;
+  margin-right: 2%;
+  float: right;
+}
+
+.display-none{
+  display: none;
+}
+
+.msg{
+  color: #fff;
+  text-align: center;
+  margin-right: 8px;
+  padding: 7px;
+}
+
+.msg.erro{
+  background: #c0392b;
 }

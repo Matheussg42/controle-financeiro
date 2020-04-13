@@ -1,10 +1,41 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { FiPower } from 'react-icons/fi';
+import { AppBar, Toolbar, makeStyles  } from '@material-ui/core';
 
 import logoImg from '../assets/logo2.png';
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  menu:{
+    background: '#1f7fc0',
+    marginBottom: '15px'
+  },
+  title: {
+    flexGrow: 1,
+  },
+  imgLogo: {
+    width: 160,
+  },
+  menuLink: {
+    color: '#fff',
+    textDecoration: 'none',
+    textTransform: 'uppercase',
+    fontWeight: 600,
+    padding: '10px 20px',
+  },
+  menuButton:{
+    marginRight: theme.spacing(2),
+    background: 'none',
+    border: 'none'
+  },
+}));
+
 export default function Header() {
+  const classes = useStyles();
+
   const history = useHistory();
 
   function handleLogout() {
@@ -14,20 +45,22 @@ export default function Header() {
   }
 
   return (
-    <div className="profile-container header">
-      <header>
-        <img src={logoImg} alt="FinancialManagement" />
+    <div className={classes.root}>
+      <AppBar className={classes.menu} position="static">
+        <Toolbar>
+          <Link to="/dashboard" className={`${classes.title}`}>
+            <img src={logoImg} className={classes.imgLogo} alt="FinancialManagement" />
+          </Link>
 
-        <div>
-          <Link className="button" to="/dashboard">Dashboard</Link>
-          <Link className="button" to="/financas">Mês Atual</Link>
-          <Link className="button" to="/dashboard">Ano Atual</Link>
-          <Link className="button" to="/dashboard">Historico</Link>
-          <button onClick={handleLogout} type="button">
+          <Link className={classes.menuLink} color="inherit" to="/dashboard">Dashboard</Link>
+          <Link className={classes.menuLink} color="inherit" to="/financas">Mês Atual</Link>
+          <Link className={classes.menuLink} color="inherit" to="/dashboard">Ano Atual</Link>
+          <Link className={classes.menuLink} color="inherit" to="/dashboard">Historico</Link>
+          <button className={classes.menuButton} onClick={handleLogout} type="button">
             <FiPower size={18} color="#fff" />
           </button>
-        </div>
-      </header>
+        </Toolbar>
+      </AppBar>
     </div>
   );
 }
