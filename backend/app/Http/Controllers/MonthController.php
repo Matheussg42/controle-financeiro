@@ -57,7 +57,6 @@ class MonthController extends Controller
             ->month
             ->getCurrentMonth();
         }catch(\Throwable|\Exception $e){
-            dd($e);
             return ResponseService::exception('months.getCurrent',null,$e);
         }
 
@@ -77,12 +76,12 @@ class MonthController extends Controller
         return new MonthResource($data,array('type' => 'update','route' => 'months.update'));
     }
 
-    public function close($id)
+    public function close(Request $request, $id)
     {
         try{        
             $data = $this
             ->month
-            ->close($id);
+            ->close($request->all(), $id);
         }catch(\Throwable|\Exception $e){
             return ResponseService::exception('months.close', $id, $e);
         }

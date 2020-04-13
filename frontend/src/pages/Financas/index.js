@@ -40,15 +40,12 @@ export default function Financas() {
   }, []);
 
   useEffect(() => {
-    console.log(thisMonth)
-    console.log(`thisMonth != false: ${thisMonth != false}`)
     if(thisMonth != false){
       api.get('api/v1/currentMonth/payment/', {
         headers: {
           Authorization: `Bearer ${token}`,
         }
       }).then(response => {
-        console.log(response.data)
         setPayments(response.data.data);
       })
 
@@ -123,7 +120,6 @@ export default function Financas() {
   
   const handleSubmitIncome = (e) =>{
     e.preventDefault();
-    console.log(incomeComment)
 
     const data ={
       "yearMonth": thisMonth.id,
@@ -144,10 +140,10 @@ export default function Financas() {
       console.log(err)
     })
 
-    // setIncomeName('');
-    // setIncomeValue('');
-    // setIncomeDate('');
-    // setIncomeComment('');
+    setIncomeName('');
+    setIncomeValue('');
+    setIncomeDate('');
+    setIncomeComment('');
   }
 
   const changeInsertForm = (form) =>{
@@ -185,8 +181,12 @@ export default function Financas() {
   }
   
   const closeMonth = () =>{
-    console.log(thisMonth)
-    api.put(`api/v1/close-month/${thisMonth.id}`, {}, {
+    const data ={
+      "received": parseInt(totalIncome),
+      "paid": parseInt(totalPayment)
+    };
+
+    api.put(`api/v1/close-month/${thisMonth.id}`, data, {
       headers: {
         Authorization: `Bearer ${token}`,
       }

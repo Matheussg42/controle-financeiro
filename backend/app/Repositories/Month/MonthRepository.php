@@ -68,10 +68,14 @@ class MonthRepository
         return $month;
     }
 
-    public function close($id)
+    public function close($request, $id)
     {
+
         $month = $this->show($id);
         $fields['status'] = 'fechado';
+        $fields['received'] = $request['received'];
+        $fields['paid'] = $request['paid'];
+        $fields['total'] = (int)$request['received'] - (int)$request['paid'];
 
         $this->checkMonthStatus($month);
 
