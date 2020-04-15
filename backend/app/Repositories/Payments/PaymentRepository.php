@@ -46,9 +46,24 @@ class PaymentRepository
 
     public function getMonthPayments($yearMonth)
     {
-        $payments =  auth()->user()->month()->find($yearMonth)->payment;
+        $payments = auth()
+        ->user()
+        ->payment()
+        ->where('yearMonth', '=', $yearMonth)->get();
 
         return $payments;
+    }
+
+    public function getMonthTotalPayments($yearMonth)
+    {
+        $totalValue = 0;
+        $payments = $this->getMonthPayments($yearMonth);
+
+        foreach($payments as $payment){
+            $totalValue +=$payment['value'];
+        }
+
+        return $totalValue;
     }
 
     public function currentMonthPayments()
@@ -56,10 +71,7 @@ class PaymentRepository
         $MonthRepository = new MonthRepository;
         $yearMonth = $MonthRepository->getCurrentMonth();
 
-        $payments = auth()
-        ->user()
-        ->payment()
-        ->where('yearMonth', '=', $yearMonth->id)->get();
+        $payments = $this->getMonthPayments($yearMonth->id); 
 
         return $payments;
     }

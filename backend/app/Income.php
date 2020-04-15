@@ -9,6 +9,6 @@ class Income extends Model
     protected $fillable = ['user_id','yearMonth','date','value','name','comment'];
 
     public function month(){
-        return $this->belongsTo('App\Month');
+        return $this->belongsTo('App\User');
     }
 }

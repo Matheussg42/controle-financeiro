@@ -5,6 +5,8 @@ namespace App\Repositories\Month;
 use App\Month;
 use Carbon\Carbon;
 use DB;
+use App\Repositories\Income\IncomeRepository;
+use App\Repositories\Payments\PaymentRepository;
 
 class MonthRepository
 {
@@ -57,6 +59,17 @@ class MonthRepository
         return $month;
     }
 
+    public function getCurrentYear()
+    {
+        $months = $this->currentYearMonths();
+
+        if (!$months) {
+            throw new \Exception('Nada Encontrado', -404);
+        }
+
+        return $months;
+    }
+
     public function update($fields, $id)
     {
         $month = $this->show($id);
@@ -79,6 +92,23 @@ class MonthRepository
 
         $this->checkMonthStatus($month);
 
+        $month->update($fields);
+        return $month;
+    }
+
+    public function closeOtherMonth($id){
+        $IncomeRepository = new IncomeRepository;
+        $PaymentRepository = new PaymentRepository;
+        
+        $totalIncome = $IncomeRepository->getMonthTotalIncomes($id);
+        $totalPayment = $PaymentRepository->getMonthTotalPayments($id);
+
+        $fields['status'] = 'fechado';
+        $fields['received'] = $totalIncome;
+        $fields['paid'] = $totalPayment;
+        $fields['total'] = $totalIncome - $totalPayment;
+
+        $month = $this->show($id);
         $month->update($fields);
         return $month;
     }
@@ -146,5 +176,18 @@ class MonthRepository
             $name = $id;
         }
         return $name;
+    }
+
+    public function currentYearMonths(){
+        $yearMonth = $this->getTheYearMonth();
+        $year = substr($yearMonth, 0, 4);
+
+        $months = auth()
+        ->user()
+        ->month()
+        ->where("yearMonth", 'like', '%' . $year . '%')
+        ->get();
+
+        return $months;
     }
 }

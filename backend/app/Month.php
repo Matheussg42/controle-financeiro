@@ -18,6 +18,6 @@ class Month extends Model
     }
     
     public function income(){
-        return $this->hasMany('App\Income', 'yearMonth', 'id');
+        return $this->hasMany('App\Income');
     }
 }

@@ -48,19 +48,33 @@ class IncomeRepository
 
     public function getMonthIncomes($yearMonth)
     {
-        $payments =  auth()->user()->month()->find((int)$yearMonth)->income;
-        return $payments;
+        $incomes = auth()
+        ->user()
+        ->income()
+        ->where('yearMonth', '=', $yearMonth)->get();
+        
+        return $incomes;
     }
 
+    public function getMonthTotalIncomes($yearMonth)
+    {
+        $totalValue = 0;
+
+        $incomes = $this->getMonthIncomes($yearMonth);
+
+        foreach($incomes as $income){
+            $totalValue +=$income['value'];
+        }
+
+        return $totalValue;
+    }
+    
     public function currentMonthIncome()
     {
         $MonthRepository = new MonthRepository;
         $yearMonth = $MonthRepository->getCurrentMonth();
 
-        $income = auth()
-        ->user()
-        ->income()
-        ->where('yearMonth', '=', $yearMonth->id)->get();
+        $income = $this->getMonthIncomes($yearMonth->id);
 
         return $income;
     }

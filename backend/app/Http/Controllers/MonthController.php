@@ -62,6 +62,18 @@ class MonthController extends Controller
 
         return new MonthResource($data,array('type' => 'show','route' => 'months.getCurrent'));
     }
+    
+    public function getCurrentYear(){
+        try{        
+            $data = $this
+            ->month
+            ->getCurrentYear();
+        }catch(\Throwable|\Exception $e){
+            return ResponseService::exception('months.getCurrentYear',null,$e);
+        }
+
+        return new MonthResourceCollection($data);
+    }
 
     public function update(UpdateMonth $request, $id)
     {
@@ -87,6 +99,20 @@ class MonthController extends Controller
         }
 
         return new MonthResource($data,array('type' => 'update','route' => 'months.close'));
+    }
+    
+    public function closeOtherMonth($id)
+    {
+        try{        
+            $data = $this
+            ->month
+            ->closeOtherMonth($id);
+        }catch(\Throwable|\Exception $e){
+            dd($e);
+            return ResponseService::exception('months.closeOther', $id, $e);
+        }
+
+        return new MonthResource($data,array('type' => 'update','route' => 'months.closeOther'));
     }
 
     public function destroy($id)
