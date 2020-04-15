@@ -186,7 +186,7 @@ export default function Financas() {
       "paid": parseInt(totalPayment)
     };
 
-    api.put(`api/v1/close-month/${thisMonth.id}`, data, {
+    api.put(`api/v1/closeMonth/${thisMonth.id}`, data, {
       headers: {
         Authorization: `Bearer ${token}`,
       }

@@ -54,7 +54,7 @@ export default function Header() {
 
           <Link className={classes.menuLink} color="inherit" to="/dashboard">Dashboard</Link>
           <Link className={classes.menuLink} color="inherit" to="/financas">Mês Atual</Link>
-          <Link className={classes.menuLink} color="inherit" to="/dashboard">Ano Atual</Link>
+          <Link className={classes.menuLink} color="inherit" to="/ano">Ano Atual</Link>
           <Link className={classes.menuLink} color="inherit" to="/dashboard">Historico</Link>
           <button className={classes.menuButton} onClick={handleLogout} type="button">
             <FiPower size={18} color="#fff" />
