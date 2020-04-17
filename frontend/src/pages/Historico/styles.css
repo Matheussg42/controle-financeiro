@@ -1,0 +1,38 @@
+.fecharMesButton{
+  position: relative;
+  top: -4px;
+  left: 0;
+  font-weight: 500;
+  font-size: 1.1em;
+  color: #c0392b;
+  padding-left: 5px;
+  cursor: pointer;
+}
+
+.mesFechado{
+  position: relative;
+  top: -4px;
+  left: 0;
+  font-weight: 500;
+  font-size: 1.1em;
+  color: #16a085;
+}
+
+.tableFooter td{
+  top: 0;
+  left: 0;
+  z-index: 2;
+  position: sticky;
+  background-color: #fafafa;
+  font-weight: 600;
+}
+
+.mesNegativo{
+  font-weight: 500 !important;
+  color: #c0392b !important;
+}
+
+.mesPositivo{
+  font-weight: 500 !important;
+  color: #16a085 !important;
+}

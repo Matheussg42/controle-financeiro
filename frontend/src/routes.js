@@ -6,6 +6,7 @@ import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import Financas from './pages/Financas';
 import Ano from './pages/Ano';
+import Historico from './pages/Historico';
 
 export default function Routes() {
   return (
@@ -17,6 +18,7 @@ export default function Routes() {
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/financas" component={Financas} />
         <Route path="/ano" component={Ano} />
+        <Route path="/historico" component={Historico} />
       </Switch>
     </BrowserRouter>
   );
