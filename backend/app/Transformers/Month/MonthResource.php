@@ -41,6 +41,7 @@ class MonthResource extends Resource
             'id' => $this->id,
             'User' => UserController::getUserName($this->user_id),
             'Data' => $this->yearMonth,
+            'Ano' => substr($this->yearMonth, 0, 4),
             'VR' => $this->ticket,
             'Received' => $this->received,
             'Paid' => $this->paid,
