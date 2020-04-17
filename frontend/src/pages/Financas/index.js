@@ -153,7 +153,7 @@ export default function Financas() {
   const getTotalPayment = () => {
     let itemTotal = 0;
     payments.map((item) => {
-      return itemTotal = itemTotal + item.Value;
+      return itemTotal = parseInt(itemTotal) + parseInt(item.Value);
     });
 
     setTotalPayments(itemTotal);
