@@ -31,11 +31,9 @@ export default function Logon() {
   return (
     <div className="logon-container">
       <section className="form">
-        <img src={logoImg} alt="FinancialManagement"/>
+        <img src={logoImg} alt="FinancialManagement" style={{ width: '90%', marginLeft: '5%' }}/>
 
         <form onSubmit={handleLogin}>
-          <h1>Faça seu logon</h1>
-
           <input 
 
             placeholder="Seu e-mail"
