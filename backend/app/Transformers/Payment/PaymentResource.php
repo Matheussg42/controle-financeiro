@@ -38,7 +38,7 @@ class PaymentResource extends Resource
     {
       
         return [
-            'ID' => $this->id,
+            'id' => $this->id,
             'User' => UserController::getUserName($this->user_id),
             'Mês' => MonthController::getMonthName($this->yearMonth),
             'Data' => $this->date,

@@ -133,7 +133,7 @@ export default function Ano() {
                       <TableBody>
                         {detailPayment.length > 0 ? detailPayment.map((payment) => 
                           (
-                            <TableRow key={payment.ID}>
+                            <TableRow key={payment.id}>
                               <TableCell component="th" scope="row">{payment.Name}</TableCell>
                               <TableCell align="right">{payment.Data}</TableCell>
                               <TableCell align="right">{payment.Value}</TableCell>
@@ -158,7 +158,7 @@ export default function Ano() {
                       <TableBody>
                         {detailIncome.length > 0 ? detailIncome.map((income) => 
                           (
-                            <TableRow key={income.ID}>
+                            <TableRow key={income.id}>
                               <TableCell component="th" scope="row">{income.Name}</TableCell>
                               <TableCell align="right">{income.Data}</TableCell>
                               <TableCell align="right">{income.Value}</TableCell>
