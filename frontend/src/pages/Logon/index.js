@@ -22,7 +22,7 @@ export default function Logon() {
       localStorage.setItem('user', JSON.stringify(response.data.user));
       localStorage.setItem('token', response.data.token);
 
-      history.push('/financeiro');
+      history.push('/financas');
     } catch (err) {
       alert('Falha no login, tente novamente.');
     }
