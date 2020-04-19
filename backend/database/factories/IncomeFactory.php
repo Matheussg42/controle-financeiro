@@ -2,6 +2,8 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 use App\User;
+use App\Income;
+use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Faker\Generator as Faker;
 
@@ -16,10 +18,13 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(App\User::class, function (Faker $faker) {
+$factory->define(App\Income::class, function (Faker $faker) {
     return [
-        'name' => $faker->name,
-        'email' => $faker->unique()->safeEmail,
-        'password' => Hash::make('12345'),// secret
+        'user_id' => 1,
+        'yearMonth' => 1,
+        'value'    => 100,
+        'date'  => '01/01/2020',
+        'name'      => 'Salario Teste',
+        'comment'     => 'Comentario para a Conta Teste'
     ];
 });

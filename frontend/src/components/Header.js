@@ -48,11 +48,10 @@ export default function Header() {
     <div className={classes.root}>
       <AppBar className={classes.menu} position="static">
         <Toolbar>
-          <Link to="/dashboard" className={`${classes.title}`}>
+          <Link to="/financas" className={`${classes.title}`}>
             <img src={logoImg} className={classes.imgLogo} alt="FinancialManagement" />
           </Link>
 
-          <Link className={classes.menuLink} color="inherit" to="/dashboard">Dashboard</Link>
           <Link className={classes.menuLink} color="inherit" to="/financas">Mês Atual</Link>
           <Link className={classes.menuLink} color="inherit" to="/ano">Ano Atual</Link>
           <Link className={classes.menuLink} color="inherit" to="/historico">Historico</Link>

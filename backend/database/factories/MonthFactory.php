@@ -2,6 +2,8 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 use App\User;
+use App\Month;
+use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Faker\Generator as Faker;
 
@@ -16,10 +18,17 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(App\User::class, function (Faker $faker) {
+$factory->define(App\Month::class, function (Faker $faker) {
+    $now = Carbon::now();
+    $yearMonth = (string) $now->year . "_" . $now->month;
+    
     return [
-        'name' => $faker->name,
-        'email' => $faker->unique()->safeEmail,
-        'password' => Hash::make('12345'),// secret
+        'user_id' => 1,
+        'yearMonth' => $yearMonth,
+        'ticket'    => 0.00,
+        'received'  => 0.00,
+        'paid'      => 0.00,
+        'total'     => 0.00,
+        'status'    => 'aberto'
     ];
 });

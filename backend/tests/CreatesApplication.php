@@ -6,6 +6,12 @@ use Illuminate\Contracts\Console\Kernel;
 
 trait CreatesApplication
 {
+    
+    public function setUp():void{
+        parent::setUp();
+        $this->prepareForTests();
+    }
+
     /**
      * Creates the application.
      *
@@ -18,5 +24,14 @@ trait CreatesApplication
         $app->make(Kernel::class)->bootstrap();
 
         return $app;
+    }
+
+    private function prepareForTests(){
+        \Artisan::call('migrate');
+        \Artisan::call('db:seed');
+    }
+
+    public function tearDown():void{
+        parent::tearDown();
     }
 }
