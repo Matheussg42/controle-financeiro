@@ -36,5 +36,5 @@ Route::group(['prefix' => 'v1', 'middleware' => 'jwt.auth'], function () {
     Route::get('income/getMonth/{id}', 'IncomeController@getMonthIncome')->name('income.getMonth');
     Route::put('closeMonth/{id}', 'MonthController@close')->name('months.close');
     Route::put('closeOtherMonth/{id}', 'MonthController@closeOtherMonth')->name('months.closeOther');
-    Route::post('logout', 'Auth\LoginController@logout');
+    Route::post('logout', 'UserController@logout');
 });

@@ -74,6 +74,22 @@
             return response()->json(compact('user'));
         }
 
+        public function logout(Request $request) {
+            try {
+                JWTAuth::invalidate($request->input('token'));
+                return response([
+                    'status' => 'success',
+                    'msg' => 'Deslogado com sucesso'
+                ], 200);
+            } catch (JWTException $e) {
+                // something went wrong whilst attempting to encode the token
+                return response([
+                    'status' => 'error',
+                    'msg' => 'Erro. Tente novamente.'
+                ],400);
+            }
+        }
+
         /**
          * Store a newly created resource in storage.
          *
