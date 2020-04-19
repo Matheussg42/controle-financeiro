@@ -10,10 +10,8 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
-
 class IncomeTest extends TestCase
 {
-
     /**
     * test_instance_of_income
     * 
