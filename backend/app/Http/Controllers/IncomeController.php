@@ -30,7 +30,6 @@ class IncomeController extends Controller
                 ->income
                 ->create($request->all());
         } catch (\Throwable | \Exception $e) {
-            dd($e);
             return ResponseService::exception('income.store', null, $e);
         }
 

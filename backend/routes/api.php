@@ -18,7 +18,7 @@ Route::post('register', 'UserController@register');
 
 
 
-Route::group(['prefix' => 'v1', 'middleware' => 'jwt.auth'], function () {
+Route::group(['prefix' => 'v1', 'middleware' => 'jwt-auth'], function () {
     Route::apiResources([
         'months'                => 'MonthController',
         'bills'                 => 'BillController',

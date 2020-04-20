@@ -108,7 +108,6 @@ class MonthController extends Controller
             ->month
             ->closeOtherMonth($id);
         }catch(\Throwable|\Exception $e){
-            dd($e);
             return ResponseService::exception('months.closeOther', $id, $e);
         }
 

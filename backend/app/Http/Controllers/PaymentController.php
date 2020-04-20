@@ -32,7 +32,6 @@ class PaymentController extends Controller
             ->payment
             ->create($request->all());
         }catch(\Throwable|\Exception $e){
-            dd($e);
             return ResponseService::exception('payments.store',null,$e);
         }
 

@@ -85,6 +85,11 @@ class MonthRepository
     {
 
         $month = $this->show($id);
+        
+        if (!$month) {
+            throw new \Exception('Nada Encontrado', -404);
+        }
+
         $fields['status'] = 'fechado';
         $fields['received'] = $request['received'];
         $fields['paid'] = $request['paid'];
