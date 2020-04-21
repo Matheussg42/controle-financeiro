@@ -24,7 +24,7 @@ export default function Ano() {
   }, [token]);
 
   const detailMonth = (month) => {
-    api.get(`api/v1/payments/getMonth/${month}`, {
+    api.get(`api/v1/getMonth/payments/${month}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       }
@@ -32,7 +32,7 @@ export default function Ano() {
       setDetailPayment(response.data.data);
     })
 
-    api.get(`api/v1/income/getMonth/${month}`, {
+    api.get(`api/v1/getMonth/income/${month}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       }
