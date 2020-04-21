@@ -28,7 +28,7 @@ class PaymentRepository
         ->user()
         ->payment()
         ->find($id);
-
+ 
         if (!$payment) {
             throw new \Exception('Nada Encontrado', -404);
         }
@@ -40,6 +40,10 @@ class PaymentRepository
     {
         $payment = $this->show($id);
 
+        if (!$payment) {
+            throw new \Exception('Nada Encontrado', -404);
+        }
+
         $payment->update($fields);
         return $payment;
     }
@@ -50,6 +54,10 @@ class PaymentRepository
         ->user()
         ->payment()
         ->where('yearMonth', '=', $yearMonth)->get();
+
+        if (count($payments) === 0) {
+            throw new \Exception('Nada Encontrado', -404);
+        }
 
         return $payments;
     }

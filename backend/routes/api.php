@@ -21,7 +21,6 @@ Route::post('register', 'UserController@register');
 Route::group(['prefix' => 'v1', 'middleware' => 'jwt-auth'], function () {
     Route::apiResources([
         'months'                => 'MonthController',
-        'bills'                 => 'BillController',
         'users'                 => 'UserController',
         'payments'              => 'PaymentController',
         'income'                => 'IncomeController',
@@ -31,9 +30,8 @@ Route::group(['prefix' => 'v1', 'middleware' => 'jwt-auth'], function () {
     Route::get('currentMonth', 'MonthController@getCurrentMonth')->name('months.getCurrent');
     Route::get('currentMonth/income/', 'IncomeController@currentMonthIncome')->name('income.getCurrentIncome');
     Route::get('currentMonth/payment/', 'PaymentController@currentMonthPayment')->name('payments.getCurrentPayments');
-    Route::get('currentMonth/bill/', 'BillController@currentMonthBill')->name('bills.getCurrentBills');
-    Route::get('payments/getMonth/{id}', 'PaymentController@getMonthPayments')->name('payments.getMonth');
-    Route::get('income/getMonth/{id}', 'IncomeController@getMonthIncome')->name('income.getMonth');
+    Route::get('getMonth/payments/{id}', 'PaymentController@getMonthPayments')->name('payments.getMonth');
+    Route::get('getMonth/income/{id}', 'IncomeController@getMonthIncome')->name('income.getMonth');
     Route::put('closeMonth/{id}', 'MonthController@close')->name('months.close');
     Route::put('closeOtherMonth/{id}', 'MonthController@closeOtherMonth')->name('months.closeOther');
     Route::post('logout', 'UserController@logout');

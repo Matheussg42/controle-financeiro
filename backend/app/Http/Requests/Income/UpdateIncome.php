@@ -28,7 +28,6 @@ class UpdateIncome extends FormRequest
     public function rules()
     {
         return [
-            'yearMonth'      => 'required',
         ];
     }
 

@@ -28,9 +28,6 @@ class UpdatePayment extends FormRequest
     public function rules()
     {
         return [
-            'yearMonth'  => 'required',
-            'name'      => 'required',
-            'value'     => 'required',
         ];
     }
 
