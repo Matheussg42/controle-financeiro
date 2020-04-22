@@ -25,11 +25,97 @@ class PaymentController extends Controller
         $this->payment = $payment;
     }
 
+    /**
+     * Todos os Pagamentos
+     * 
+     * Busca todos os Pagamentos cadastrados por esse usuário
+     * 
+     * @response {
+     *  "data": [
+     *    {
+     *      "id": 1,
+     *      "User": "Name Teste",
+     *      "Name": "Teste",
+     *      "Mês": "2020_1",
+     *      "Data": "01\/01\/2020",
+     *      "Value": 1000,
+     *      "Comment": "Caiu no dia 01\/01"
+     *    },
+     *    {
+     *      "id": 2,
+     *      "User": "Name Teste",
+     *      "Name": "Teste",
+     *      "Mês": "2020_1",
+     *      "Data": "01\/01\/2020",
+     *      "Value": 2000,
+     *      "Comment": null
+     *    },
+     *    {
+     *      "id": 3,
+     *      "User": "Name Teste",
+     *      "Name": "Teste",
+     *      "Mês": "2020_2",
+     *      "Data": "01\/02\/2020",
+     *      "Value": 2000,
+     *      "Comment": ""
+     *    },
+     *    {
+     *      "id": 4,
+     *      "User": "Name Teste",
+     *      "Name": "Teste",
+     *      "Mês": "2020_3",
+     *      "Data": "01\/03\/2020",
+     *      "Value": 2000,
+     *      "Comment": ""
+     *    },
+     *    {
+     *      "id": 5,
+     *      "User": "Name Teste",
+     *      "Name": "Teste",
+     *      "Mês": "2020_4",
+     *      "Data": "01\/04\/2020",
+     *      "Value": 2000,
+     *      "Comment": ""
+     *    }
+     *  ],
+     *  "status": true,
+     *  "msg": "Listando dados",
+     *  "url": "http:\/\/127.0.0.1:8000\/api\/v1\/payments"
+     *}
+     * 
+     */
     public function index()
     {
         return new PaymentResourceCollection($this->payment->all());
     }
 
+    /**
+     * Cadastrar Pagamento
+     * 
+     * @bodyParam yearMonth int Id do mês que o pagamento ocorreu. Example: 4
+     * @bodyParam value int Valor do pagamento. Example: 1000
+     * @bodyParam name string Nome do pagamento. Example: Salario
+     * @bodyParam date string Data que o pagamento ocorreu. Example: 01/04/2020
+     * @bodyParam comment string Comentário do pagamento. Example: O pagamento caiu no dia 01/04/2020.
+     * 
+     *
+     * 
+     * @response {
+     *  "data": {
+     *    "id": 6,
+     *    "User": "Name Teste",
+     *    "Name": "Conta",
+     *    "Mês": "2020_4",
+     *    "Data": "1\/04\/2020",
+     *    "Value": 1000,
+     *    "Comment": "O pagamento da conta aconteceu no dia 01/04/2020"
+     *  },
+     *  "status": true,
+     *  "msg": "Dado inserido com sucesso",
+     *  "url": "http:\/\/127.0.0.1:8000\/api\/v1\/payments"
+     *}
+     * 
+    */
     public function store(StorePayment $request)
     {
         try{        
@@ -43,6 +129,27 @@ class PaymentController extends Controller
         return new PaymentResource($data,array('type' => 'store','route' => 'payments.store'));
     }
 
+    /**
+     * Encontrar Pagamento pelo Id
+     * 
+     * @urlParam id required O codigo identificador do pagamento.
+     * 
+     * @response {
+     *  "data": {
+     *    "id": 6,
+     *    "User": "Name Teste",
+     *    "Name": "Conta",
+     *    "Mês": "2020_4",
+     *    "Data": "1\/04\/2020",
+     *    "Value": 1000,
+     *    "Comment": "O pagamento da conta aconteceu no dia 01/04/2020"
+     *  },
+     *  "status": true,
+     *  "msg": "Requisição realizada com sucesso",
+     *  "url": "http:\/\/127.0.0.1:8000\/api\/v1\/payments\/6"
+     *}
+     * 
+    */
     public function show($id)
     {
         try{        
@@ -56,6 +163,32 @@ class PaymentController extends Controller
         return new PaymentResource($data,array('type' => 'show','route' => 'payments.show'));
     }
 
+    /**
+     * Atualizar pagamento pelo Id
+     * 
+     * @urlParam id required O codigo identificador do pagamento.
+     * 
+     * @bodyParam value int Valor do pagamento. Example: 1000
+     * @bodyParam name string Nome do pagamento. Example: Salario
+     * @bodyParam date string Data que o pagamento ocorreu. Example: 01/04/2020
+     * @bodyParam comment string Comentário do pagamento. Example: O pagamento da conta foi feito no dia no dia 01/04/2020.
+     * 
+     * @response {
+     *  "data": {
+     *    "id": 6,
+     *    "User": "Name Teste",
+     *    "Name": "Conta",
+     *    "Mês": "2020_4",
+     *    "Data": "1\/04\/2020",
+     *    "Value": 1000,
+     *    "Comment": "O pagamento da conta foi feito no dia no dia 01/04/2020"
+     *  },
+     *  "status": true,
+     *  "msg": "Requisição realizada com sucesso",
+     *  "url": "http:\/\/127.0.0.1:8000\/api\/v1\/payments\/6"
+     *}
+     * 
+    */
     public function update(UpdatePayment $request, $id)
     {
         try{        
@@ -69,6 +202,38 @@ class PaymentController extends Controller
         return new PaymentResource($data,array('type' => 'update','route' => 'payments.update'));
     }
 
+    /**
+     * Pegar o pagamento de um mês pelo Id
+     * 
+     * @urlParam id required O codigo identificador do pagamento.
+     * 
+     * @response {
+     *  "data": [
+     *    {
+     *      "id": 5,
+     *      "User": "Name Teste",
+     *      "Name": "Teste",
+     *      "Mês": "2020_4",
+     *      "Data": "01\/04\/2020",
+     *      "Value": 2000,
+     *      "Comment": ""
+     *    },
+     *    {
+     *      "id": 6,
+     *      "User": "Name Teste",
+     *      "Name": "Conta",
+     *      "Mês": "2020_4",
+     *      "Data": "1\/04\/2020",
+     *      "Value": 1000,
+     *      "Comment": "O pagamento da conta foi feito no dia no dia 01/04/2020"
+     *    }
+     *  ],
+     *  "status": true,
+     *  "msg": "Requisição realizada com sucesso",
+     *  "url": "http:\/\/127.0.0.1:8000\/api\/v1\/currentMonth\/payment"
+     *}
+     * 
+    */
     public function getMonthPayments($yearMonth){
         try{
             $data = $this
@@ -81,6 +246,36 @@ class PaymentController extends Controller
         return new PaymentResourceCollection($data);
     }
 
+    /**
+     * Pegar os pagamentos do mês atual
+     * 
+     * @response {
+     *  "data": [
+     *    {
+     *      "id": 5,
+     *      "User": "Name Teste",
+     *      "Name": "Teste",
+     *      "Mês": "2020_4",
+     *      "Data": "01\/04\/2020",
+     *      "Value": 2000,
+     *      "Comment": ""
+     *    },
+     *    {
+     *      "id": 6,
+     *      "User": "Name Teste",
+     *      "Name": "Conta",
+     *      "Mês": "2020_4",
+     *      "Data": "1\/04\/2020",
+     *      "Value": 1000,
+     *      "Comment": "O pagamento da conta foi feito no dia no dia 01/04/2020"
+     *    }
+     *  ],
+     *  "status": true,
+     *  "msg": "Requisição realizada com sucesso",
+     *  "url": "http:\/\/127.0.0.1:8000\/api\/v1\/currentMonth\/payment"
+     *}
+     * 
+    */
     public function currentMonthPayment(){
         try{
             $data = $this
@@ -93,6 +288,27 @@ class PaymentController extends Controller
         return new PaymentResourceCollection($data);
     }
 
+    /**
+     * Deletar pagamento pelo Id
+     * 
+     * @urlParam id required O codigo identificador do pagamento.
+     * 
+     * @response {
+     *  "data": {
+     *    "id": 6,
+     *    "User": "Name Teste",
+     *    "Name": "Salario",
+     *    "Mês": "2020_4",
+     *    "Data": "1\/04\/2020",
+     *    "Value": 1000,
+     *    "Comment": "O pagamento da conta foi feito no dia no dia 01/04/2020"
+     *  },
+     *  "status": true,
+     *  "msg": "Dado excluido com sucesso",
+     *  "url": "http:\/\/127.0.0.1:8000\/api\/v1\/payments\/6"
+     *}
+     * 
+    */
     public function destroy($id)
     {
         try{
