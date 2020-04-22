@@ -11,6 +11,11 @@ use App\Http\Requests\Income\UpdateIncome;
 use App\Services\ResponseService;
 use App\Repositories\Income\IncomeRepository;
 
+/**
+ * @group Income Controller
+ * 
+ * Endpoints para as funcionalidades de Recebimento.
+ */
 class IncomeController extends Controller
 {
     private $income;

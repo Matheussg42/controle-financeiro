@@ -10,8 +10,31 @@
     use Tymon\JWTAuth\Exceptions\JWTException;
     use App\Repositories\User\UserRepository;
 
+    /**
+     * @group User Controller
+     * 
+     * Endpoints para as funcionalidades de Usuário.
+     */
     class UserController extends Controller
     {
+        /**
+         * Login de Usuário
+         * 
+         * @bodyParam email string E-mail do Usuário. Example: nometeste@mail.com
+         * @bodyParam password string Senha do Usuário. Example: 123456
+         * 
+
+         * @response {
+         *   "user": {
+         *     "id": 14,
+         *     "name": "Nome Teste",
+         *     "email": "nometeste@mail.com"
+         *   },
+         *   "status": "success",
+         *   "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9yZWdpc3RlciIsImlhdCI6MTU4NzUxMzM5OSwiZXhwIjoxMDI1NDE3OTc5OSwibmJmIjoxNTg3NTEzMzk5LCJqdGkiOiJJeWlZZ0hiY1VMQXpvemxXIiwic3ViIjoxNCwicHJ2IjoiODdlMGFmMWVmOWZkMTU4MTJmZGVjOTcxNTNhMTRlMGIwNDc1NDZhYSJ9.vafNnsQt9SymgstX3B6CRkypIfwz7NM8TFhkIXg3DvE"
+         * }
+         * 
+         */
         public function authenticate(Request $request)
         {
             $credentials = $request->only('email', 'password');
@@ -34,6 +57,26 @@
             ],200);
         }
 
+        /**
+         * Cadastrar  usuário
+         * 
+         * @bodyParam name string Nome do Usuário. Example: Nome Teste
+         * @bodyParam email string E-mail do Usuário. Example: nometeste@mail.com
+         * @bodyParam password string Senha do Usuário. Example: 123456
+         * @bodyParam password_confirmation string Confirmação da senha do Usuário. Example: 123456
+         * 
+         * @response {
+         *   "user": {
+         *     "name": "Nome Teste",
+         *     "email": "nometeste@mail.com",
+         *     "updated_at": "2020-04-21 20:56:39",
+         *     "created_at": "2020-04-21 20:56:39",
+         *     "id": 14
+         *   },
+         *   "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9yZWdpc3RlciIsImlhdCI6MTU4NzUxMzM5OSwiZXhwIjoxMDI1NDE3OTc5OSwibmJmIjoxNTg3NTEzMzk5LCJqdGkiOiJJeWlZZ0hiY1VMQXpvemxXIiwic3ViIjoxNCwicHJ2IjoiODdlMGFmMWVmOWZkMTU4MTJmZGVjOTcxNTNhMTRlMGIwNDc1NDZhYSJ9.vafNnsQt9SymgstX3B6CRkypIfwz7NM8TFhkIXg3DvE"
+         * }
+         * 
+         */
         public function register(Request $request)
         {
             $validator = Validator::make($request->all(), [
@@ -57,23 +100,15 @@
             return response()->json(compact('user','token'),201);
         }
 
-        public function getAuthenticatedUser()
-        {
-            try {
-                if (! $user = JWTAuth::parseToken()->authenticate()) {
-                    return response()->json(['user_not_found'], 404);
-                }
-            } catch (Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
-                return response()->json(['token_expired'], $e->getStatusCode());
-            } catch (Tymon\JWTAuth\Exceptions\TokenInvalidException $e) {
-                return response()->json(['token_invalid'], $e->getStatusCode());
-            } catch (Tymon\JWTAuth\Exceptions\JWTException $e) {
-                return response()->json(['token_absent'], $e->getStatusCode());
-            }
-
-            return response()->json(compact('user'));
-        }
-
+        /**
+         * Logout de Usuário
+         * 
+         * @response {
+         *  "status": "success",
+         *  "msg": "Deslogado com sucesso"
+         * }
+         * 
+         */
         public function logout(Request $request) {
             try {
                 JWTAuth::invalidate($request->input('token'));
@@ -96,16 +131,16 @@
          * @param  \Illuminate\Http\Request  $request
          * @return \Illuminate\Http\Response
          */
-        public function store(StoreUser $request)
-        {
-            try{        
-                $data = $this->user->create($request->all());
-            }catch(\Throwable|\Exception $e){
-                return ResponseService::exception('users.store',null,$e);
-            }
+        // public function store(StoreUser $request)
+        // {
+        //     try{        
+        //         $data = $this->user->create($request->all());
+        //     }catch(\Throwable|\Exception $e){
+        //         return ResponseService::exception('users.store',null,$e);
+        //     }
 
-            return new UserResource($data,array('type' => 'store','route' => 'users.store'));
-        }
+        //     return new UserResource($data,array('type' => 'store','route' => 'users.store'));
+        // }
 
         static function getUserName($id){
             $user = new UserRepository();

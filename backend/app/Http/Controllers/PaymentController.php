@@ -12,6 +12,11 @@ use App\Services\ResponseService;
 use App\Http\Controllers\Notification;
 use App\Repositories\Payments\PaymentRepository;
 
+/**
+ * @group Payment Controller
+ * 
+ * Endpoints para as funcionalidades de Pagamento.
+ */
 class PaymentController extends Controller
 {
     private $payment;
