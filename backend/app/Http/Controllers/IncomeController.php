@@ -10,6 +10,7 @@ use App\Http\Requests\Income\StoreIncome;
 use App\Http\Requests\Income\UpdateIncome;
 use App\Services\ResponseService;
 use App\Repositories\Income\IncomeRepository;
+use App\Repositories\Month\MonthRepository;
 
 /**
  * @group Income Controller
@@ -120,6 +121,9 @@ class IncomeController extends Controller
             $data = $this
                 ->income
                 ->create($request->all());
+
+            $month = new MonthRepository();
+            $month->updateValue($request->all()['yearMonth']);
         } catch (\Throwable | \Exception $e) {
             return ResponseService::exception('income.store', null, $e);
         }
@@ -307,9 +311,16 @@ class IncomeController extends Controller
     */
     public function destroy($id){
         try{
+            $income = $this
+            ->income
+            ->show($id);
+
             $data = $this
             ->income
             ->destroy($id);
+
+            $month = new MonthRepository();
+            $month->updateValue($income['yearMonth']);
         }catch(\Throwable|\Exception $e){
             return ResponseService::exception('income.destroy',$id,$e);
         }

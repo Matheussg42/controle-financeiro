@@ -11,6 +11,7 @@ use App\Http\Requests\Payment\UpdatePayment;
 use App\Services\ResponseService;
 use App\Http\Controllers\Notification;
 use App\Repositories\Payments\PaymentRepository;
+use App\Repositories\Month\MonthRepository;
 
 /**
  * @group Payment Controller
@@ -122,6 +123,9 @@ class PaymentController extends Controller
             $data = $this
             ->payment
             ->create($request->all());
+            
+            $month = new MonthRepository();
+            $month->updateValue($request->all()['yearMonth']);
         }catch(\Throwable|\Exception $e){
             return ResponseService::exception('payments.store',null,$e);
         }
@@ -312,9 +316,16 @@ class PaymentController extends Controller
     public function destroy($id)
     {
         try{
+            $payment = $this
+            ->payment
+            ->show($id);
+
             $data = $this
             ->payment
             ->destroy($id);
+            
+            $month = new MonthRepository();
+            $month->updateValue($payment['yearMonth']);
         }catch(\Throwable|\Exception $e){
             return ResponseService::exception('payments.destroy',$id,$e);
         }

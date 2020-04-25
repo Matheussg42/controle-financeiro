@@ -28,9 +28,12 @@ export default function Register() {
     try {
       const response = await api.post('api/register', data);
       
-      alert(`Olá ${response.data.user.name}, seu cadastro foi feito com sucesso!`);
+      const responseLogin = await api.post('api/login', { email, password });
 
-      history.push('/');
+      localStorage.setItem('user', JSON.stringify(responseLogin.data.user));
+      localStorage.setItem('token', responseLogin.data.token);
+
+      history.push('/financas');
     } catch (err) {
       alert('Erro no cadastro, tente novamente.');
     }

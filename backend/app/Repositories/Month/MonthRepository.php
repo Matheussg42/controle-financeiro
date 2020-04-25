@@ -80,6 +80,23 @@ class MonthRepository
         $month->update($fields);
         return $month;
     }
+    
+    public function updateValue($id)
+    {
+        $IncomeRepository = new IncomeRepository;
+        $PaymentRepository = new PaymentRepository;
+        
+        $totalIncome = $IncomeRepository->getMonthTotalIncomes($id);
+        $totalPayment = $PaymentRepository->getMonthTotalPayments($id);
+
+        
+        $data['received'] = $totalIncome;
+        $data['paid'] = $totalPayment;
+        $data['total'] = $totalIncome - $totalPayment;
+        
+        $month = $this->show($id);
+        $month->update($data);
+    }
 
     public function close($request, $id)
     {

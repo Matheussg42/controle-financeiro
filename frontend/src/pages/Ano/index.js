@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Header from '../../components/Header'
-import { Container, TableBody, Table, TableCell ,TableContainer, TableHead, TableRow, Tooltip, Grid } from '@material-ui/core';
+import { Container, TableBody, Table, TableCell ,TableContainer, TableHead, TableRow, Grid } from '@material-ui/core';
 import { FiCheckSquare, FiSquare, FiEye } from 'react-icons/fi';
 import api from '../../services/api';
 import './styles.css'
@@ -83,7 +83,7 @@ export default function Ano() {
         <Grid container>
           
           <Grid item xs={8}>
-            <h3 className="tableTitle">* Pagamentos, Recebimentos e Total só estão disponiveis após o mês ser fechado.</h3>
+            <h3 className="tableTitle">Movimentação Financeira do Ano atual.</h3>
             <TableContainer className="tableGrid">
 
               <Table stickyHeader aria-label="sticky table">
@@ -164,13 +164,11 @@ export default function Ano() {
                       <TableBody>
                         {detailPayment.length > 0 ? detailPayment.map((payment) => 
                           (
-                            <Tooltip title={payment.comment}>
-                              <TableRow key={payment.id}>
-                                <TableCell component="th" scope="row">{payment.Name}</TableCell>
-                                <TableCell align="right">{payment.Data}</TableCell>
-                                <TableCell align="right">{payment.Value}</TableCell>
-                              </TableRow>
-                            </Tooltip>
+                            <TableRow key={payment.id}>
+                              <TableCell component="th" scope="row">{payment.Name}</TableCell>
+                              <TableCell align="right">{payment.Data}</TableCell>
+                              <TableCell align="right">{payment.Value}</TableCell>
+                            </TableRow>
                           )) : null 
                         }
                       </TableBody>
@@ -191,13 +189,11 @@ export default function Ano() {
                       <TableBody>
                         {detailIncome.length > 0 ? detailIncome.map((income) => 
                           (
-                            <Tooltip title={income.comment}>
-                              <TableRow key={income.id}>
-                                <TableCell component="th" scope="row">{income.Name}</TableCell>
-                                <TableCell align="right">{income.Data}</TableCell>
-                                <TableCell align="right">{income.Value}</TableCell>
-                              </TableRow>
-                            </Tooltip>
+                            <TableRow key={income.id}>
+                              <TableCell component="th" scope="row">{income.Name}</TableCell>
+                              <TableCell align="right">{income.Data}</TableCell>
+                              <TableCell align="right">{income.Value}</TableCell>
+                            </TableRow>
                           )) : null 
                         }
                       </TableBody>

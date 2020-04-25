@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Header from '../../components/Header'
-import { Container, TableBody, Table, TableCell ,TableContainer, TableHead, TableRow, TextField, Grid, Tooltip  } from '@material-ui/core';
+import { Container, TableBody, Table, TableCell ,TableContainer, TableHead, TableRow, TextField, Grid  } from '@material-ui/core';
 import { FiTrash } from 'react-icons/fi';
 import api from '../../services/api';
 import './styles.css';
@@ -15,12 +15,12 @@ export default function Financas() {
   const [thisMonth, setThisMonth] = useState([]);
   
   const [paymentName, setPaymentName] = useState('');
-  const [paymentValue, setPaymentValue] = useState(0);
+  const [paymentValue, setPaymentValue] = useState(null);
   const [paymentDate, setPaymentDate] = useState('');
   const [paymentComment, setPaymentComment] = useState('');
   
   const [incomeName,    setIncomeName] = useState('');
-  const [incomeValue,   setIncomeValue] = useState(0);
+  const [incomeValue,   setIncomeValue] = useState(null);
   const [incomeDate,    setIncomeDate] = useState('');
   const [incomeComment, setIncomeComment] = useState('');
   
@@ -337,16 +337,14 @@ export default function Financas() {
                 <TableBody>
                   {payments.length > 0 ? payments.map((payment) => 
                     (
-                      <Tooltip title={payment.comment}>
-                        <TableRow key={payment.id}>
-                          <TableCell component="th" scope="row">{payment.Name}</TableCell>
-                          <TableCell align="right">{payment.Data}</TableCell>
-                          <TableCell align="right">{payment.Value}</TableCell>
-                          <TableCell align="right">
-                              <FiTrash className="cursorPointed" size={20} color="#c0392b" onClick={() => handleDeletePayment(payment.id)} />
-                          </TableCell>
-                        </TableRow>
-                      </Tooltip>
+                      <TableRow key={payment.id}>
+                        <TableCell component="th" scope="row">{payment.Name}</TableCell>
+                        <TableCell align="right">{payment.Data}</TableCell>
+                        <TableCell align="right">{payment.Value}</TableCell>
+                        <TableCell align="right">
+                            <FiTrash className="cursorPointed" size={20} color="#c0392b" onClick={() => handleDeletePayment(payment.id)} />
+                        </TableCell>
+                      </TableRow>
                     )) : null 
                   }
                 </TableBody>
@@ -369,16 +367,14 @@ export default function Financas() {
                 </TableHead>
                 <TableBody>
                   {incomes.length > 0 ? incomes.map((income) => (
-                    <Tooltip title={income.comment}>
-                      <TableRow key={income.id}>
-                        <TableCell component="th" scope="row">{income.Name}</TableCell>
-                        <TableCell align="right">{income.Data}</TableCell>
-                        <TableCell align="right">{income.Value}</TableCell>
-                        <TableCell align="right">
-                            <FiTrash className="cursorPointed" size={20} color="#c0392b" onClick={() => handleDeleteIncomes(income.id)} />
-                        </TableCell>
-                      </TableRow>
-                    </Tooltip>
+                    <TableRow key={income.id}>
+                      <TableCell component="th" scope="row">{income.Name}</TableCell>
+                      <TableCell align="right">{income.Data}</TableCell>
+                      <TableCell align="right">{income.Value}</TableCell>
+                      <TableCell align="right">
+                          <FiTrash className="cursorPointed" size={20} color="#c0392b" onClick={() => handleDeleteIncomes(income.id)} />
+                      </TableCell>
+                    </TableRow>
                   )) : null }
                 </TableBody>
               </Table>
