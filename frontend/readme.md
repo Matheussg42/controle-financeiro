@@ -14,7 +14,6 @@
 </p>
 
 <p align="center">
- <img src="https://img.shields.io/static/v1?label=OmniStack&message=11&color=7159c1&labelColor=444444" alt="OmniStack 11!" />
 
   <img alt="Documentation" src="https://img.shields.io/static/v1?label=Documentation&message=V1.0&color=f1c40f&labelColor=444444"> 
   
@@ -26,7 +25,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/Matheussg42/OmniStack11">Home</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="https://github.com/Matheussg42/pts_FinancialManagement">Home</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="/backend">Back-end</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="/frontend">Front-end</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="https://apidoc.sgomes.dev/Projetos/FinancialManagement/index.php" target="_blank">APIDoc</a>
