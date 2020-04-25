@@ -1,22 +1,53 @@
-<p align="center"><a target="_blank" href="https://matheus.sgomes.dev"><img src="https://matheus.sgomes.dev/img/logo_azul.png"></a></p>
-<p align="center">Matheus S. Gomes - <a target="_blank" href="https://matheus.sgomes.dev">https://matheus.sgomes.dev</a></p>
+<p align="center"><a target="_blank" href="https://matheus.sgomes.dev"><img src="https://matheus.sgomes.dev/img/logo_azul.png"></a></>
 
-## About Project
 
-This gonna be a simple project to study. I'll use Laravel for Back-end Restful API, React to front-end who will consume the API, and React Native to make a Mobile App.
+👤 **Matheus S. Gomes** 
 
-## Back-end stuff
+* Website: https://matheus.sgomes.dev
+* Github: [@Matheussg42](https://github.com/Matheussg42)
+* LinkedIn: [@matheussg](https://linkedin.com/in/matheussg)
 
-- Under construction
+---
 
-## Front-end stuff
+<p align="center">
+<img src="frontend/src/assets/logo.png" style='width: 300px'>
+</p>
 
-- Under construction
+<p align="center">
+ <img src="https://img.shields.io/static/v1?label=OmniStack&message=11&color=7159c1&labelColor=444444" alt="OmniStack 11!" />
 
-## Mobile stuff
+  <img alt="Documentation" src="https://img.shields.io/static/v1?label=Documentation&message=V1.0&color=f1c40f&labelColor=444444"> 
+  
+  <img alt="Back-end" src="https://img.shields.io/static/v1?label=Back-end&message=Ok&color=27ae60&labelColor=444444">
+  
+  <img alt="Front-end" src="https://img.shields.io/static/v1?label=Front-end&message=Ok&color=27ae60&labelColor=444444"> 
+  
+  <img alt="Tests" src="https://img.shields.io/static/v1?label=Test&message=Ok&color=27ae60&labelColor=444444">
+</p>
 
-- Under construction
+<p align="center">
+  <a href="https://github.com/Matheussg42/OmniStack11">Home</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="/backend">Back-end</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="/frontend">Front-end</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="https://apidoc.sgomes.dev/Projetos/FinancialManagement/index.php" target="_blank">APIDoc</a>
+</p>
 
-## Modules
+#### Nesta Página:
 
-- Under construction.
+* [Tecnologias](#tecnologias)
+* [Projeto](#projeto)
+
+<span id="tecnologias"></span>
+## Tecnologias
+
+Esse projeto foi desenvolvido com as seguintes tecnologias:
+
+- [PHP](https://www.php.net/)
+- [Laravel](https://laravel.com/)
+- [PHPUnit](https://phpunit.de/)
+- [React](https://reactjs.org)
+
+<span id="projeto"></span>
+## Projeto
+
+O Financial Management é um projeto feito para treinar o conhecimento nas tecnologias citadas a cima. Neste projeto, foi desenvolvido um gerenciador financeiro, com a possibilidade de inserir os valores recebidos e pagos por mês. Possuindo Registro e Login para separarmos o controle financeiro por usuário.

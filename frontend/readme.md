@@ -35,71 +35,71 @@
 #### Nesta Página:
 
 * [Projeto](#projeto)
-* [Configuração](#config)
 * [Instalando dependências](#dependencias)
 * [Subindo a aplicação](#aplicacao)
-* [Endpoints](#endpoints)
-* [Testes](#testes)
+* [Telas](#telas)
 
 <span id="projeto"></span>
 ## Projeto
 
 O Financial Management é um projeto feito para treinar o conhecimento nas tecnologias citadas a cima. Neste projeto, foi desenvolvido um gerenciador financeiro, com a possibilidade de inserir os valores recebidos e pagos por mês. Possuindo Registro e Login para separarmos o controle financeiro por usuário.
 
-<span id="config"></span>
-## Configuração
-
-Acesse a raiz da pasta `backend`, é necessário criar o `.env` do projeto, e para isso, crie uma copia ou renomeie o arquivo `.env-dist`. O próximo passo é a criação de um novo Banco de Dados para o projeto. O nome do banco deve ser informado na linha `DB_DATABASE=` do `.env`.
-
 <span id="dependencias"></span>
 ## Instalando dependências
 
-Acesse a raiz da pasta `backend` pelo _terminal_, e instale as dependências usando o comando `composer`.
+Acesse a raiz da pasta `frontend` pelo _terminal_, e instale as dependências usando o comando `yarn`, ou `npm`.
 
-```php
-composer install
+```js
+yarn install
+```
+
+```js
+npm install
 ```
 
 <span id="aplicacao"></span>
 ## Subindo a aplicação
 
-Acesse a raiz da pasta `backend` pelo _terminal_, digite os comandos:
+Acesse a raiz da pasta `frontend` pelo _terminal_, digite o comando `yarn start`.
 
-```php
-php artisan key:generate
-```
-Para gerar a chave do projeto.
-
-```php
-php artisan migrate
-```
-Para criar as tabelas utilizadas no projeto.
-
-```php
-php artisan migrate:refresh --seed
-```
-Para criar as tabelas utilizadas no projeto, já com registros.
-
-```php
-php artisan serve
-```
-Para iniciar o Back-end do projeto.
-
-<span id="endpoints"></span>
-## Endpoints
-
-A documentação dos Endpoints foi gerada e esta disponível para consultas neste link.
-
-https://apidoc.sgomes.dev/Projetos/FinancialManagement/index.php
-
-<span id="teste"></span>
-## Testes
-
-O projeto foi criado com testes Unitários e de Integrações.
-Para executar os testes, acesse a raiz da pasta `backend` pelo _terminal_, digite os comandos:
-
-```php
-vendor/bin/phpunit
+```js
+yarn start
 ```
 
-![](../.assets/Testes.png)
+<span id="telas"></span>
+## Telas
+
+#### Usuário
+
+* Cadastro de Usuário
+* Login
+
+![](../.assets/registro.gif)
+
+![](../.assets/login.gif)
+
+#### Financeiro
+
+* Abrir Mês
+* Cadastro de Pagamento
+* Cadastro de Recebimento
+* Listar Movimentação Financeira
+* Fechar Mês
+
+![](../.assets/pagamento.gif)
+
+![](../.assets/recebimento.gif)
+
+#### Ano
+
+* Listar Movimentações do Ano atual
+* Fechar Mês
+
+![](../.assets/ano.gif)
+
+#### Histórico
+
+* Listar Movimentações dos meses por ano
+* Fechar Mês
+
+![](../.assets/historico.gif)
