@@ -76,6 +76,10 @@ class IncomeRepository
 
         $income = $this->getMonthIncomes($yearMonth->id);
 
+        if (count($income) === 0) {
+            throw new \Exception('Nada Encontrado', -404);
+        }
+
         return $income;
     }
 

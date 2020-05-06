@@ -55,10 +55,6 @@ class PaymentRepository
         ->payment()
         ->where('yearMonth', '=', $yearMonth)->get();
 
-        if (count($payments) === 0) {
-            throw new \Exception('Nada Encontrado', -404);
-        }
-
         return $payments;
     }
 
@@ -80,6 +76,10 @@ class PaymentRepository
         $yearMonth = $MonthRepository->getCurrentMonth();
 
         $payments = $this->getMonthPayments($yearMonth->id); 
+
+        if (count($payments) === 0) {
+            throw new \Exception('Nada Encontrado', -404);
+        }
 
         return $payments;
     }

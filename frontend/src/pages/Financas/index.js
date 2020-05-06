@@ -15,12 +15,12 @@ export default function Financas() {
   const [thisMonth, setThisMonth] = useState([]);
   
   const [paymentName, setPaymentName] = useState('');
-  const [paymentValue, setPaymentValue] = useState(null);
+  const [paymentValue, setPaymentValue] = useState(0);
   const [paymentDate, setPaymentDate] = useState('');
   const [paymentComment, setPaymentComment] = useState('');
   
   const [incomeName,    setIncomeName] = useState('');
-  const [incomeValue,   setIncomeValue] = useState(null);
+  const [incomeValue,   setIncomeValue] = useState(0);
   const [incomeDate,    setIncomeDate] = useState('');
   const [incomeComment, setIncomeComment] = useState('');
   
