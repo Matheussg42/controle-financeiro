@@ -11,8 +11,6 @@ WORKDIR $APP_HOME
 COPY ./frontend $APP_HOME
 COPY ./frontend/package.json /app/package.json
 
-RUN npm install -g react-scripts
-
 RUN yarn install --silent
 
 CMD yarn run start
