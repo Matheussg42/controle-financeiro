@@ -16,6 +16,6 @@ WORKDIR /app
 # copy from build image
 COPY --from=BUILD_IMAGE /app/ ./
 
-EXPOSE 3030
+EXPOSE 3000
 
 CMD yarn run start
